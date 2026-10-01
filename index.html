@@ -28,7 +28,9 @@
       --shadow-card: 0 1px 2px rgba(80,45,20,.045), 0 3px 10px rgba(80,45,20,.04);
       --card-body: #fffaf2;
       --card-header: #efd2ad;
+      --card-header-end: #f5dfc6;
       --card-header-band: #d8d6ad;
+      --card-header-band-end: #e3e1c2;
       --card-accent: #a64f24;
       --card-accent-band: #6f713f;
       --action-brown: #7d4710;
@@ -371,12 +373,12 @@
       margin: -20px -20px 0;
       padding: 14px 14px 13px 20px;
       border-bottom: 1px solid var(--line);
-      background: var(--card-header);
+      background: linear-gradient(135deg, var(--card-header) 0%, var(--card-header-end) 100%);
     }
 
     .card:nth-child(4n + 3) .card-head,
     .card:nth-child(4n + 4) .card-head {
-      background: var(--card-header-band);
+      background: linear-gradient(135deg, var(--card-header-band) 0%, var(--card-header-band-end) 100%);
     }
 
     .card h3 {
