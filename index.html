@@ -407,9 +407,6 @@
       justify-content: center;
       width: 44px;
       height: 44px;
-      border: 1px solid rgba(59,44,35,.16);
-      border-radius: 9px;
-      background: rgba(255,250,242,.72);
       color: var(--text);
       text-decoration: none;
       line-height: 1;
@@ -448,9 +445,13 @@
 
     .card-head-action:hover,
     .card-head-action:focus-visible {
-      background: #fffaf2;
-      border-color: var(--card-accent);
       outline: none;
+    }
+
+    .card-head-action:focus-visible {
+      outline: 2px solid var(--action-icon);
+      outline-offset: 2px;
+      border-radius: 6px;
     }
 
     .badge {
