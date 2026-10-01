@@ -267,32 +267,6 @@
       line-height: 1.45;
     }
 
-    .jump {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin: 18px 0 0;
-    }
-
-    .jump a {
-      display: inline-block;
-      padding: 7px 11px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--surface);
-      color: var(--text);
-      text-decoration: none;
-      transition: background-color .15s ease, border-color .15s ease;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .jump a:hover,
-    .jump a:focus-visible {
-      background: var(--accent-soft);
-      border-color: var(--accent);
-    }
-
     .section { margin-top: 42px; }
 
     .section-head {
@@ -532,7 +506,6 @@
       <h1>Weekend Activities</h1>
       <div class="weekend" id="weekend">Loading this weekend…</div>
       <div class="weather" id="weather" hidden></div>
-      <nav class="jump" id="jump" aria-label="Jump to a section"></nav>
     </section>
 
     <div id="content" aria-live="polite"></div>
@@ -704,10 +677,6 @@
       events.forEach(event => grid.append(card(event)));
       section.append(grid);
       document.getElementById("content").append(section);
-
-      const jump = el("a", "", title);
-      jump.href = `#${id}`;
-      document.getElementById("jump").append(jump);
     }
 
     async function render() {
