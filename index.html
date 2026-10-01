@@ -7,7 +7,7 @@
   <title>Weekend Activities · 20171</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Slab:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
@@ -24,7 +24,8 @@
       --warning: #8c3f22;
       --warning-bg: #f7ddcd;
       --link: #7d371c;
-      --shadow: 0 1px 2px rgba(80,45,20,.05), 0 10px 28px rgba(80,45,20,.08);
+      --shadow-raised: 0 1px 2px rgba(80,45,20,.05), 0 10px 28px rgba(80,45,20,.08);
+      --shadow-card: 0 1px 2px rgba(80,45,20,.045), 0 3px 10px rgba(80,45,20,.04);
       --card-body: #fffaf2;
       --card-header: #efd2ad;
       --card-header-band: #d8d6ad;
@@ -43,7 +44,16 @@
       --forecast-sun-bg: #eef0f5;
       --forecast-sun-border: #c7ccd8;
       --forecast-sun-label: #636a7d;
+      --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --font-display: "Roboto Slab", Georgia, ui-serif, serif;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 20px;
+      --space-6: 24px;
+      --space-7: 32px;
+      --space-8: 40px;
     }
 
     * { box-sizing: border-box; }
@@ -57,9 +67,8 @@
       background-size: 28px 28px, 28px 28px;
       background-position: 0 0, 14px 14px;
       color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: var(--font-sans);
       line-height: 1.5;
-      transition: background-color .18s ease, color .18s ease;
     }
 
     a { color: var(--link); }
@@ -67,15 +76,15 @@
     .page {
       width: min(960px, calc(100% - 28px));
       margin: 0 auto;
-      padding: 34px 0 64px;
+      padding: var(--space-7) 0 64px;
     }
 
     .hero-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 7px;
+      gap: var(--space-3);
+      margin-bottom: var(--space-2);
     }
 
     .scope-tabs {
@@ -101,11 +110,26 @@
       line-height: 1;
       white-space: nowrap;
       cursor: pointer;
+      transition: background-color .14s ease, color .14s ease, transform .08s ease;
     }
 
-    .scope-tabs button[aria-selected="true"] {
+    .scope-tabs button:hover {
+      background: rgba(241,216,189,.48);
+      color: var(--text);
+    }
+
+    .scope-tabs button:active {
+      transform: translateY(1px);
+    }
+
+    .scope-tabs button[aria-pressed="true"] {
       background: var(--accent-soft);
       color: var(--text);
+    }
+
+    .scope-tabs button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
 
     .hero {
@@ -115,7 +139,7 @@
       background: linear-gradient(135deg, var(--surface) 0%, var(--hero-end) 100%);
       border: 1px solid var(--line);
       border-radius: 18px;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-raised);
     }
 
     .hero::after {
@@ -247,6 +271,7 @@
     .forecast-temp {
       margin: 0;
       color: var(--text);
+      font-variant-numeric: tabular-nums;
       font-size: 25px;
       font-weight: 800;
       line-height: 1.15;
@@ -280,7 +305,7 @@
       line-height: 1.45;
     }
 
-    .section { margin-top: 42px; }
+    .section { margin-top: var(--space-8); }
 
     .section-head {
       display: flex;
@@ -295,7 +320,7 @@
     .section-head h2 {
       margin: 0;
       font-family: var(--font-display);
-      color: var(--accent);
+      color: var(--text);
       font-size: 27px;
       letter-spacing: -.01em;
     }
@@ -308,7 +333,7 @@
     .grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+      gap: var(--space-4);
     }
 
     .best-grid {
@@ -328,7 +353,7 @@
       border-top: 4px solid var(--card-accent);
       border-radius: 14px;
       background: var(--card-body);
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-card);
     }
 
     .card:nth-child(4n + 3),
@@ -393,7 +418,7 @@
       mask-position: center;
       -webkit-mask-size: contain;
       mask-size: contain;
-      transition: background-color .15s ease, transform .15s ease;
+      transition: color .15s ease, transform .15s ease;
     }
 
     .action-icon-marker {
@@ -425,6 +450,66 @@
       border-radius: 6px;
     }
 
+    .meta-icon {
+      display: inline-block;
+      flex: 0 0 auto;
+      width: 15px;
+      height: 15px;
+      background: currentColor;
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      mask-position: center;
+      -webkit-mask-size: contain;
+      mask-size: contain;
+    }
+
+    .meta-icon-date,
+    .day-heading::before {
+      -webkit-mask-image: url("./assets/icons/calendar-day.svg");
+      mask-image: url("./assets/icons/calendar-day.svg");
+    }
+
+    .meta-icon-time {
+      -webkit-mask-image: url("./assets/icons/clock.svg");
+      mask-image: url("./assets/icons/clock.svg");
+    }
+
+    .meta-icon-place {
+      -webkit-mask-image: url("./assets/icons/marker.svg");
+      mask-image: url("./assets/icons/marker.svg");
+    }
+
+    .meta-icon-cost {
+      -webkit-mask-image: url("./assets/icons/money.svg");
+      mask-image: url("./assets/icons/money.svg");
+    }
+
+    .meta-icon-ticket {
+      -webkit-mask-image: url("./assets/icons/ticket.svg");
+      mask-image: url("./assets/icons/ticket.svg");
+    }
+
+    .day-heading {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .day-heading::before {
+      content: "";
+      width: 22px;
+      height: 22px;
+      flex: 0 0 22px;
+      background: var(--accent);
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      mask-position: center;
+      -webkit-mask-size: contain;
+      mask-size: contain;
+    }
+
     .badge {
       align-self: flex-start;
       margin-top: 9px;
@@ -447,12 +532,15 @@
     .fact {
       display: grid;
       grid-template-columns: 82px minmax(0,1fr);
-      gap: 8px;
-      margin: 5px 0;
+      gap: var(--space-2);
+      margin: 6px 0;
       font-size: 13px;
     }
 
     .fact dt {
+      display: flex;
+      align-items: center;
+      gap: 6px;
       margin: 0;
       color: var(--muted);
       font-weight: 700;
@@ -464,45 +552,109 @@
     }
 
     .description {
-      margin: 15px 0 0;
-      font-size: 14px;
+      margin: var(--space-4) 0 0;
+      max-width: 62ch;
       color: var(--text);
+      font-size: 15px;
+      line-height: 1.55;
     }
 
     .registration {
-      margin: 10px 0 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin: var(--space-3) 0 0;
       color: var(--muted);
       font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .registration .meta-icon {
+      width: 14px;
+      height: 14px;
+      margin-top: 1px;
     }
 
     .actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: var(--space-4);
       margin-top: auto;
-      padding-top: 16px;
+      padding-top: var(--space-4);
     }
 
     .actions a {
+      border-radius: 4px;
       font-size: 13px;
       font-weight: 750;
       text-decoration-thickness: 1px;
       text-underline-offset: 3px;
     }
 
-    .empty, .error {
-      padding: 22px;
+    .actions a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .loading, .empty, .error {
+      padding: var(--space-5);
       background: var(--surface);
       border: 1px solid var(--line);
       border-radius: 14px;
       color: var(--muted);
     }
 
+    .loading {
+      text-align: center;
+    }
+
+    .state-title {
+      margin: 0 0 var(--space-2);
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .state-copy {
+      margin: 0;
+    }
+
+    .retry-button {
+      min-height: 44px;
+      margin-top: var(--space-4);
+      padding: 8px 14px;
+      border: 1px solid var(--accent);
+      border-radius: 9px;
+      background: var(--accent-soft);
+      color: var(--text);
+      font: 700 14px/1 var(--font-sans);
+      cursor: pointer;
+    }
+
+    .retry-button:hover {
+      background: #eac9a5;
+    }
+
+    .retry-button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
     footer {
-      margin-top: 42px;
+      margin-top: var(--space-8);
       color: var(--muted);
       font-size: 12px;
       text-align: center;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+      }
     }
 
     @media (max-width: 720px) {
@@ -617,9 +769,9 @@
     <section class="hero">
       <div class="hero-top">
         <p class="eyebrow">🍂 Around 20171</p>
-        <div class="scope-tabs" role="tablist" aria-label="Event distance">
-          <button type="button" role="tab" data-scope="local" aria-selected="true">📍 Local</button>
-          <button type="button" role="tab" data-scope="nova_plus" aria-selected="false">🚗 NoVA+</button>
+        <div class="scope-tabs" role="group" aria-label="Event distance">
+          <button type="button" data-scope="local" aria-pressed="true">📍 Local</button>
+          <button type="button" data-scope="nova_plus" aria-pressed="false">🚗 NoVA+</button>
         </div>
       </div>
       <h1>Weekend Activities</h1>
@@ -627,7 +779,9 @@
       <div class="weather" id="weather" hidden></div>
     </section>
 
-    <div id="content" aria-live="polite"></div>
+    <div id="content" aria-live="polite">
+      <div class="loading">Loading weekend activities…</div>
+    </div>
 
     <footer>
       Event details can change. Confirm times, prices, weather impacts and availability with the organizer before leaving.
@@ -706,9 +860,16 @@
       return node;
     }
 
-    function factRow(icon, label, value) {
+    function metadataIcon(name) {
+      const icon = el("span", `meta-icon meta-icon-${name}`);
+      icon.setAttribute("aria-hidden", "true");
+      return icon;
+    }
+
+    function factRow(iconName, label, value) {
       const wrapper = el("div", "fact");
-      const dt = el("dt", "", `${icon} ${label}`);
+      const dt = el("dt");
+      dt.append(metadataIcon(iconName), document.createTextNode(label));
       const dd = el("dd", "", value);
       wrapper.append(dt, dd);
       return wrapper;
@@ -785,10 +946,10 @@
 
       const facts = el("dl", "facts");
       facts.append(
-        factRow("📅", "Date", eventDateLabel(event)),
-        factRow("🕒", "Time", event.time || "Time varies"),
-        factRow("📍", "Where", [event.venue, event.area].filter(Boolean).join(" · ") || "Location varies"),
-        factRow("💵", "Cost", event.price || "Price not confirmed")
+        factRow("date", "Date", eventDateLabel(event)),
+        factRow("time", "Time", event.time || "Time varies"),
+        factRow("place", "Where", [event.venue, event.area].filter(Boolean).join(" · ") || "Location varies"),
+        factRow("cost", "Cost", event.price || "Price not confirmed")
       );
       article.append(facts);
 
@@ -797,7 +958,12 @@
       }
 
       if (event.registration) {
-        article.append(el("p", "registration", `🎟️ ${event.registration}`));
+        const registration = el("p", "registration");
+        registration.append(
+          metadataIcon("ticket"),
+          document.createTextNode(event.registration)
+        );
+        article.append(registration);
       }
 
       const actions = el("div", "actions");
@@ -821,7 +987,9 @@
       section.id = id;
 
       const head = el("div", "section-head");
-      head.append(el("h2", "", title));
+      const heading = el("h2", "", title);
+      if (!best) heading.classList.add("day-heading");
+      head.append(heading);
       if (subtitle) head.append(el("span", "", subtitle));
       section.append(head);
 
@@ -840,7 +1008,7 @@
       content.replaceChildren();
 
       document.querySelectorAll("[data-scope]").forEach(button => {
-        button.setAttribute("aria-selected", String(button.dataset.scope === scope));
+        button.setAttribute("aria-pressed", String(button.dataset.scope === scope));
       });
 
       localStorage.setItem("weekend-scope", scope);
@@ -871,7 +1039,7 @@
         const dayEvents = scopedEvents.filter(event => (event.dates || []).includes(iso));
         addSection(
           `${scope}-${iso}`,
-          "🗓️ " + new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(day),
+          new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(day),
           longDate(iso).replace(/^[^,]+, /, ""),
           dayEvents
         );
@@ -891,6 +1059,19 @@
     }
 
     async function render() {
+      const content = document.getElementById("content");
+      const weather = document.getElementById("weather");
+      const savedScope = localStorage.getItem("weekend-scope");
+      const initialScope = savedScope === "nova_plus" ? "nova_plus" : "local";
+
+      document.querySelectorAll("[data-scope]").forEach(button => {
+        button.setAttribute("aria-pressed", String(button.dataset.scope === initialScope));
+      });
+
+      content.replaceChildren(el("div", "loading", "Loading weekend activities…"));
+      weather.hidden = true;
+      weather.replaceChildren();
+
       try {
         const response = await fetch(dataUrl, { cache: "no-store" });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -899,7 +1080,6 @@
         document.title = `Weekend Activities · ${weekendRange(report)}`;
         document.getElementById("weekend").textContent = weekendRange(report);
 
-        const weather = document.getElementById("weather");
         const forecast = report.forecast || [];
 
         if (forecast.length) {
@@ -960,21 +1140,26 @@
           weather.append(strong, document.createTextNode(report.weather_note));
         }
 
-        const savedScope = localStorage.getItem("weekend-scope");
-        const initialScope = savedScope === "nova_plus" ? "nova_plus" : "local";
-
         document.querySelectorAll("[data-scope]").forEach(button => {
-          button.addEventListener("click", () => renderScope(report, button.dataset.scope));
+          button.onclick = () => renderScope(report, button.dataset.scope);
         });
 
         renderScope(report, initialScope);
       } catch (error) {
-        const message = el(
-          "div",
-          "error",
-          "The latest weekend list could not be loaded. Try refreshing in a moment."
+        if (document.getElementById("weekend").textContent.includes("Loading")) {
+          document.getElementById("weekend").textContent = "Weekend data unavailable";
+        }
+
+        const state = el("div", "error");
+        state.append(
+          el("div", "state-title", "Weekend list couldn’t load"),
+          el("p", "state-copy", "Your Local / NoVA+ choice is unchanged.")
         );
-        document.getElementById("content").append(message);
+        const retry = el("button", "retry-button", "Try again");
+        retry.type = "button";
+        retry.addEventListener("click", render);
+        state.append(retry);
+        content.replaceChildren(state);
         console.error(error);
       }
     }

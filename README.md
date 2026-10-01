@@ -138,10 +138,15 @@ Use a **Playskool-style design mentality**: make important information obvious, 
 Practical rules:
 
 - prefer clear visual hierarchy over subtlety;
-- use familiar emoji as functional visual cues when they improve scanning;
+- use consistent SVG glyphs for functional metadata and actions; reserve emoji mainly for expressive cues such as weather or scope;
 - make weather, dates, times, costs, directions, and plan-ahead warnings identifiable at a glance;
 - keep controls large and plainly labeled;
 - use short plain-language descriptions;
 - favor warm seasonal color and subtle alternating row/card bands over decorative artwork;
 - use banding to help the eye track groups without creating strong visual stripes;
-- keep ornamentation minimal unless it clearly improves scanning.
+- keep ornamentation minimal unless it clearly improves scanning;
+- use Inter for body, controls, and metadata, with Roboto Slab reserved for display hierarchy;
+- preserve accent scarcity: strong rust/olive accents should indicate hierarchy, selection, or meaningful structure rather than decorate every element;
+- use restrained card elevation and let spacing, borders, header color, and alignment carry most grouping;
+- keep Local / NoVA+ as a compact segmented filter with explicit pressed state and keyboard-visible focus;
+- distinguish loading, empty, and failure states and provide a direct retry path for load failures.
