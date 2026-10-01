@@ -87,16 +87,40 @@ def validate(package):
     if str(report.get("center_zip") or "") != "20171":
         fail("center_zip must be 20171")
 
-    events = report.get("events")
-    if not isinstance(events, list) or not events:
-        fail("events must be a non-empty list")
-
-    seen_ids = set()
     valid_days = {
         weekend_start.isoformat(),
         (weekend_start + timedelta(days=1)).isoformat(),
         weekend_end.isoformat(),
     }
+
+    forecast = report.get("forecast")
+    if forecast is not None:
+        if not isinstance(forecast, list) or len(forecast) != 3:
+            fail("forecast must contain exactly Friday, Saturday, and Sunday")
+        forecast_dates = []
+        for day in forecast:
+            if not isinstance(day, dict):
+                fail("Every forecast entry must be an object")
+            day_date = str(day.get("date") or "").strip()
+            forecast_dates.append(day_date)
+            if day_date not in valid_days:
+                fail(f"Forecast date {day_date!r} is outside the weekend")
+            for key in ("high_f", "low_f"):
+                value = day.get(key)
+                if not isinstance(value, (int, float)) or value < -100 or value > 150:
+                    fail(f"Forecast {day_date} has invalid {key}")
+            if not str(day.get("conditions") or "").strip():
+                fail(f"Forecast {day_date} is missing conditions")
+            day["notable"] = str(day.get("notable") or "").strip()
+        if len(set(forecast_dates)) != 3 or set(forecast_dates) != valid_days:
+            fail("forecast must contain each Friday-Sunday date exactly once")
+        forecast.sort(key=lambda day: day["date"])
+
+    events = report.get("events")
+    if not isinstance(events, list) or not events:
+        fail("events must be a non-empty list")
+
+    seen_ids = set()
 
     for event in events:
         if not isinstance(event, dict):
