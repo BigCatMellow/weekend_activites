@@ -168,11 +168,29 @@
     }
 
     .forecast-day {
+      display: grid;
+      grid-template-columns: 86px minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
       min-width: 0;
-      padding: 12px;
+      min-height: 128px;
+      padding: 14px;
       border: 1px solid var(--line);
       border-radius: 10px;
       background: var(--surface);
+    }
+
+    .forecast-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      text-align: center;
+    }
+
+    .forecast-details {
+      min-width: 0;
     }
 
     .forecast-day:nth-child(1) {
@@ -194,23 +212,32 @@
     }
 
     .forecast-icon {
-      margin-bottom: 4px;
-      font-size: 30px;
+      margin-bottom: 8px;
+      font-size: 44px;
       line-height: 1;
     }
 
     .forecast-day-name {
       color: var(--forecast-day-label, var(--accent));
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .08em;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .07em;
+      line-height: 1.15;
       text-transform: uppercase;
     }
 
-    .forecast-temp {
+    .forecast-date {
       margin-top: 3px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 650;
+      line-height: 1.2;
+    }
+
+    .forecast-temp {
+      margin: 0;
       color: var(--text);
-      font-size: 22px;
+      font-size: 25px;
       font-weight: 800;
       line-height: 1.15;
     }
@@ -488,44 +515,35 @@
         gap: 7px;
       }
       .forecast-day {
-        display: grid;
-        grid-template-columns: 38px 72px 68px minmax(0, 1fr);
-        grid-template-areas:
-          "icon day temp condition"
-          "icon note note note";
-        column-gap: 8px;
-        row-gap: 3px;
-        align-items: center;
-        padding: 9px 11px;
+        grid-template-columns: 76px minmax(0, 1fr);
+        gap: 12px;
+        min-height: 104px;
+        padding: 10px 12px;
       }
       .forecast-icon {
-        grid-area: icon;
-        margin: 0;
-        font-size: 27px;
-        text-align: center;
+        margin-bottom: 6px;
+        font-size: 38px;
       }
       .forecast-day-name {
-        grid-area: day;
-        margin: 0;
+        font-size: 11px;
+      }
+      .forecast-date {
+        font-size: 10px;
       }
       .forecast-temp {
-        grid-area: temp;
-        margin: 0;
-        font-size: 19px;
+        font-size: 22px;
         white-space: nowrap;
       }
       .forecast-temp span {
         font-size: 12px;
       }
       .forecast-condition {
-        grid-area: condition;
-        margin: 0;
+        margin-top: 3px;
         font-size: 12px;
         line-height: 1.25;
       }
       .forecast-note {
-        grid-area: note;
-        margin: 0;
+        margin-top: 5px;
         font-size: 11px;
         line-height: 1.25;
       }
@@ -864,15 +882,25 @@
           forecast.forEach(day => {
             const panel = el("div", "forecast-day");
             const dateValue = parseDate(day.date);
-            panel.append(el("div", "forecast-icon", weatherIcon(day.conditions)));
-            panel.append(
+
+            const left = el("div", "forecast-left");
+            left.append(el("div", "forecast-icon", weatherIcon(day.conditions)));
+            left.append(
               el(
                 "div",
                 "forecast-day-name",
                 new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(dateValue)
               )
             );
+            left.append(
+              el(
+                "div",
+                "forecast-date",
+                new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" }).format(dateValue)
+              )
+            );
 
+            const details = el("div", "forecast-details");
             const temp = el("div", "forecast-temp");
             temp.append(
               document.createTextNode(`${Math.round(day.high_f)}° `),
@@ -881,14 +909,16 @@
                 return low;
               })()
             );
-            panel.append(temp);
+            details.append(temp);
 
             if (day.conditions) {
-              panel.append(el("div", "forecast-condition", day.conditions));
+              details.append(el("div", "forecast-condition", day.conditions));
             }
             if (day.notable) {
-              panel.append(el("div", "forecast-note", day.notable));
+              details.append(el("div", "forecast-note", day.notable));
             }
+
+            panel.append(left, details);
             forecastGrid.append(panel);
           });
           weather.append(forecastGrid);
