@@ -124,6 +124,52 @@
       color: var(--text);
     }
 
+    .scope-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 18px 0 4px;
+    }
+
+    .scope-tabs {
+      display: inline-grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 5px;
+      width: min(420px, 100%);
+      padding: 5px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .scope-tabs button {
+      min-height: 48px;
+      border: 0;
+      border-radius: 10px;
+      padding: 9px 16px;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .scope-tabs button[aria-selected="true"] {
+      background: var(--accent-soft);
+      color: var(--text);
+      box-shadow: inset 0 0 0 1px var(--line);
+    }
+
+    .scope-note {
+      margin: 8px auto 0;
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
     .hero {
       position: relative;
       overflow: hidden;
@@ -362,7 +408,7 @@
       background: rgba(255,250,242,.72);
       color: var(--text);
       text-decoration: none;
-      font-size: 17px;
+      font-size: 40px;
       line-height: 1;
       cursor: pointer;
     }
@@ -533,7 +579,7 @@
       .card-head-action {
         width: 46px;
         height: 46px;
-        font-size: 27px;
+        font-size: 40px;
       }
       .fact { grid-template-columns: 74px minmax(0,1fr); }
     }
@@ -553,6 +599,14 @@
       <div class="weekend" id="weekend">Loading this weekend…</div>
       <div class="weather" id="weather" hidden></div>
     </section>
+
+    <div class="scope-wrap">
+      <div class="scope-tabs" role="tablist" aria-label="Event distance">
+        <button type="button" role="tab" data-scope="local" aria-selected="true">📍 Local</button>
+        <button type="button" role="tab" data-scope="nova_plus" aria-selected="false">🚗 NoVA+</button>
+      </div>
+    </div>
+    <div class="scope-note" id="scope-note">Closer to 20171</div>
 
     <div id="content" aria-live="polite"></div>
 
@@ -776,6 +830,70 @@
       document.getElementById("content").append(section);
     }
 
+    function eventScope(event) {
+      return event.scope === "nova_plus" ? "nova_plus" : "local";
+    }
+
+    function renderScope(report, scope) {
+      const content = document.getElementById("content");
+      content.replaceChildren();
+
+      document.querySelectorAll("[data-scope]").forEach(button => {
+        button.setAttribute("aria-selected", String(button.dataset.scope === scope));
+      });
+
+      document.getElementById("scope-note").textContent =
+        scope === "local"
+          ? "Closer to 20171"
+          : "Broader Northern Virginia + major worth-the-drive events";
+
+      localStorage.setItem("weekend-scope", scope);
+
+      const scopedEvents = (report.events || []).filter(event => eventScope(event) === scope);
+      const lookup = new Map(scopedEvents.map(event => [event.id, event]));
+      const best = (report.best_bet_ids || []).map(id => lookup.get(id)).filter(Boolean);
+
+      if (best.length) {
+        addSection(
+          `best-bets-${scope}`,
+          "⭐ Best Bets",
+          scope === "local" ? "Close-by standouts" : "Worth the drive",
+          best,
+          true
+        );
+      }
+
+      const start = parseDate(report.weekend_start);
+      for (let offset = 0; offset < 3; offset += 1) {
+        const day = new Date(start);
+        day.setDate(start.getDate() + offset);
+        const iso = [
+          day.getFullYear(),
+          String(day.getMonth() + 1).padStart(2, "0"),
+          String(day.getDate()).padStart(2, "0")
+        ].join("-");
+        const dayEvents = scopedEvents.filter(event => (event.dates || []).includes(iso));
+        addSection(
+          `${scope}-${iso}`,
+          "🗓️ " + new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(day),
+          longDate(iso).replace(/^[^,]+, /, ""),
+          dayEvents
+        );
+      }
+
+      if (!content.children.length) {
+        content.append(
+          el(
+            "div",
+            "empty",
+            scope === "local"
+              ? "No local activities have been published yet."
+              : "No NoVA+ activities have been published yet."
+          )
+        );
+      }
+    }
+
     async function render() {
       try {
         const response = await fetch(dataUrl, { cache: "no-store" });
@@ -834,33 +952,14 @@
           weather.append(strong, document.createTextNode(report.weather_note));
         }
 
-        const lookup = new Map((report.events || []).map(event => [event.id, event]));
-        const best = (report.best_bet_ids || []).map(id => lookup.get(id)).filter(Boolean);
-        addSection("best-bets", "⭐ Best Bets", "A varied shortlist", best, true);
+        const savedScope = localStorage.getItem("weekend-scope");
+        const initialScope = savedScope === "nova_plus" ? "nova_plus" : "local";
 
-        const start = parseDate(report.weekend_start);
-        for (let offset = 0; offset < 3; offset += 1) {
-          const day = new Date(start);
-          day.setDate(start.getDate() + offset);
-          const iso = [
-            day.getFullYear(),
-            String(day.getMonth() + 1).padStart(2, "0"),
-            String(day.getDate()).padStart(2, "0")
-          ].join("-");
-          const dayEvents = (report.events || []).filter(event => (event.dates || []).includes(iso));
-          addSection(
-            iso,
-            "🗓️ " + new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(day),
-            longDate(iso).replace(/^[^,]+, /, ""),
-            dayEvents
-          );
-        }
+        document.querySelectorAll("[data-scope]").forEach(button => {
+          button.addEventListener("click", () => renderScope(report, button.dataset.scope));
+        });
 
-        if (!document.getElementById("content").children.length) {
-          document.getElementById("content").append(
-            el("div", "empty", "No weekend activities have been published yet.")
-          );
-        }
+        renderScope(report, initialScope);
       } catch (error) {
         const message = el(
           "div",
