@@ -1,0 +1,47 @@
+name: Publish Weekend Activities request
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: weekend-activities-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: startsWith(github.event.issue.title, '[publish] Weekend Activities ') && github.event.issue.author_association == 'OWNER'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate and publish request
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          GH_TOKEN: ${{ github.token }}
+          NOTES_TRIGGER_TOKEN: ${{ secrets.NOTES_TRIGGER_TOKEN }}
+        run: python scripts/publish_weekend.py
+
+      - name: Close successful request
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue close "${{ github.event.issue.number }}" --comment "Published, validated, and handed off for email delivery."
+
+      - name: Mark failed request
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue comment "${{ github.event.issue.number }}" --body "Publication failed. The email trigger was not intentionally advanced. Check this workflow run for the validation or write error."
