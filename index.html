@@ -40,39 +40,6 @@
       --forecast-sun-label: #636a7d;
     }
 
-    body[data-theme="neutral"] {
-      --bg: #f3f2ef;
-      --surface: #ffffff;
-      --surface-soft: #f7f6f3;
-      --hero-end: #f7f6f3;
-      --text: #202124;
-      --muted: #686b70;
-      --line: #deddd9;
-      --accent: #315f4f;
-      --accent-2: #315f4f;
-      --accent-soft: #e7f0eb;
-      --warning: #7a5200;
-      --warning-bg: #fff1cc;
-      --link: #2457a6;
-      --shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.05);
-      --card-body: #ffffff;
-      --card-header: #e8ebe7;
-      --card-header-band: #dde3dd;
-      --card-accent: #315f4f;
-      --card-accent-band: #68756d;
-      --action-icon: #d39a1e;
-      --action-icon-hover: #a96f08;
-      --forecast-fri-bg: #f7f1e5;
-      --forecast-fri-border: #d8c7a4;
-      --forecast-fri-label: #86613d;
-      --forecast-sat-bg: #edf2ec;
-      --forecast-sat-border: #c5d0c4;
-      --forecast-sat-label: #536b5b;
-      --forecast-sun-bg: #eef1f5;
-      --forecast-sun-border: #c8ced8;
-      --forecast-sun-label: #5d6878;
-    }
-
     * { box-sizing: border-box; }
 
     body {
@@ -94,52 +61,22 @@
 
     .topbar {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: flex-end;
-      gap: 8px;
-      flex-wrap: wrap;
       margin-bottom: 10px;
     }
 
-    .theme-switch {
-      display: inline-flex;
-      gap: 3px;
-      padding: 3px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--surface);
-      box-shadow: var(--shadow);
-    }
-
-    .theme-switch button {
-      border: 0;
-      border-radius: 999px;
-      padding: 6px 10px;
-      background: transparent;
-      color: var(--muted);
-      font: inherit;
-      font-size: 12px;
-      font-weight: 750;
-      cursor: pointer;
-    }
-
-    .theme-switch button[aria-pressed="true"] {
-      background: var(--accent-soft);
-      color: var(--text);
-    }
-
-    .scope-wrap {
+    .scope-control {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 18px 0 4px;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 5px;
     }
 
     .scope-tabs {
       display: inline-grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, auto);
       gap: 5px;
-      width: min(420px, 100%);
       padding: 5px;
       border: 1px solid var(--line);
       border-radius: 14px;
@@ -148,7 +85,7 @@
     }
 
     .scope-tabs button {
-      min-height: 48px;
+      min-height: 44px;
       border: 0;
       border-radius: 10px;
       padding: 9px 16px;
@@ -167,11 +104,9 @@
     }
 
     .scope-note {
-      margin: 8px auto 0;
-      max-width: 620px;
       color: var(--muted);
-      font-size: 12px;
-      text-align: center;
+      font-size: 11px;
+      text-align: right;
     }
 
     .hero {
@@ -536,7 +471,12 @@
 
     @media (max-width: 720px) {
       .page { width: min(100% - 20px, 960px); padding-top: 14px; }
-      .topbar { justify-content: flex-start; margin-bottom: 8px; }
+      .topbar { justify-content: flex-end; margin-bottom: 8px; }
+      .scope-tabs button {
+        min-height: 44px;
+        padding: 8px 13px;
+        font-size: 14px;
+      }
       .hero { padding: 24px 20px 22px; border-radius: 14px; }
       .grid, .best-grid { grid-template-columns: 1fr; }
       .forecast-grid {
@@ -622,12 +562,15 @@
     }
   </style>
 </head>
-<body data-theme="fall">
+<body>
   <main class="page" id="app">
     <div class="topbar">
-      <div class="theme-switch" aria-label="Color theme">
-        <button type="button" data-theme-choice="fall" aria-pressed="true">🍂 Fall</button>
-        <button type="button" data-theme-choice="neutral" aria-pressed="false">Neutral</button>
+      <div class="scope-control">
+        <div class="scope-tabs" role="tablist" aria-label="Event distance">
+          <button type="button" role="tab" data-scope="local" aria-selected="true">📍 Local</button>
+          <button type="button" role="tab" data-scope="nova_plus" aria-selected="false">🚗 NoVA+</button>
+        </div>
+        <div class="scope-note" id="scope-note">Closer to 20171</div>
       </div>
     </div>
     <section class="hero">
@@ -637,14 +580,6 @@
       <div class="weather" id="weather" hidden></div>
     </section>
 
-    <div class="scope-wrap">
-      <div class="scope-tabs" role="tablist" aria-label="Event distance">
-        <button type="button" role="tab" data-scope="local" aria-selected="true">📍 Local</button>
-        <button type="button" role="tab" data-scope="nova_plus" aria-selected="false">🚗 NoVA+</button>
-      </div>
-    </div>
-    <div class="scope-note" id="scope-note">Closer to 20171</div>
-
     <div id="content" aria-live="polite"></div>
 
     <footer>
@@ -653,26 +588,6 @@
   </main>
 
   <script>
-    const themeButtons = [...document.querySelectorAll("[data-theme-choice]")];
-    const savedTheme = localStorage.getItem("weekend-theme");
-    const initialTheme = savedTheme === "neutral" ? "neutral" : "fall";
-
-    function setTheme(theme) {
-      document.body.dataset.theme = theme;
-      themeButtons.forEach(button => {
-        button.setAttribute(
-          "aria-pressed",
-          String(button.dataset.themeChoice === theme)
-        );
-      });
-      localStorage.setItem("weekend-theme", theme);
-    }
-
-    themeButtons.forEach(button => {
-      button.addEventListener("click", () => setTheme(button.dataset.themeChoice));
-    });
-    setTheme(initialTheme);
-
     const dataUrl = "./data/latest.json";
 
     function parseDate(value) {
