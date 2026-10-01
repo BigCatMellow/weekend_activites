@@ -1,0 +1,91 @@
+# Weekend Activities
+
+A weekly Thursday roundup of things to do around ZIP code **20171** (Herndon / Oak Hill / Chantilly / Fairfax County), delivered by email through the existing `BigCatMellow/Notes` SMTP setup.
+
+## How it works
+
+1. A scheduled ChatGPT task researches the coming Friday-Sunday.
+2. It submits one owner-authored GitHub issue titled:
+   `[publish] Weekend Activities YYYY-MM-DD`
+3. GitHub Actions validates the package and writes:
+   - `data/latest.json`
+   - `data/archive/YYYY-MM-DD.json`
+4. Each event gets a one-click Google Maps directions URL generated from its address. No Google Maps API key is required.
+5. After the persisted JSON is re-read and validated, the workflow updates:
+   `BigCatMellow/Notes/data/weekend-activities-trigger.txt`
+6. That push triggers the existing Notes email infrastructure, which sends a clean HTML + plain-text email.
+
+## Email structure
+
+The email is intentionally simple:
+
+- Weekend dates and short weather note
+- **Best bets**
+- Friday
+- Saturday
+- Sunday
+- Each event includes:
+  - title
+  - time
+  - location
+  - price
+  - short description
+  - registration/ticket warning when relevant
+  - **Directions** link
+  - **Event details** link
+
+## Search scope
+
+The scheduled research should search broadly around 20171, including Herndon, Reston, Chantilly, Centreville, Fairfax, Vienna, Great Falls, Sterling, Ashburn, Leesburg, McLean, Burke, and other worthwhile destinations within a reasonable drive.
+
+Coverage should include:
+
+- festivals, fairs, markets, and seasonal events
+- family / toddler-friendly activities
+- parks and nature programs
+- libraries and community events
+- live music and theater
+- museums and cultural events
+- sports
+- adult / date-night options
+- free events
+- indoor/rain backups
+
+The goal is breadth first, then a short curated **Best Bets** section.
+
+## One-time setup
+
+The email credentials already live in `BigCatMellow/Notes`, so they do **not** need to be copied here.
+
+This repository needs one Actions secret:
+
+`NOTES_TRIGGER_TOKEN`
+
+Use a fine-grained GitHub token with:
+
+- Repository access: **Only selected repositories → BigCatMellow/Notes**
+- Repository permission: **Contents: Read and write**
+- No other write permissions
+
+Add it under:
+
+**weekend_activites → Settings → Secrets and variables → Actions → New repository secret**
+
+If the token used by Morning Edition was saved somewhere safe, the same token can be reused here because it has the same narrow purpose. GitHub does not let you reveal an existing stored secret, so create a new token if you no longer have the value.
+
+## Manual test
+
+After `NOTES_TRIGGER_TOKEN` is configured:
+
+1. Open **Actions** in this repository.
+2. Run **Publish Weekend Activities request** only by submitting a valid publish issue; the normal scheduled task will do this automatically.
+3. Or run the Notes workflow **Weekend Activities email** manually after `data/latest.json` exists.
+
+## Failure behavior
+
+- Invalid or stale packages do not publish.
+- Duplicate event source URLs are rejected.
+- Events without a usable address or source URL are rejected.
+- Publication is committed before the email trigger is touched.
+- The committed file is re-read and validated before the trigger advances.
+- If `NOTES_TRIGGER_TOKEN` is missing or invalid, the issue remains open and the workflow comments with a failure notice.
