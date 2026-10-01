@@ -320,20 +320,58 @@
       border-top-color: var(--card-accent-band);
     }
 
-    .card h3 {
+    .card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
       margin: -20px -20px 0;
-      padding: 14px 20px 13px;
+      padding: 14px 14px 13px 20px;
       border-bottom: 1px solid var(--line);
       background: var(--card-header);
+    }
+
+    .card:nth-child(4n + 3) .card-head,
+    .card:nth-child(4n + 4) .card-head {
+      background: var(--card-header-band);
+    }
+
+    .card h3 {
+      margin: 0;
+      min-width: 0;
       color: var(--text);
       font-size: 21px;
       line-height: 1.18;
       letter-spacing: -.015em;
     }
 
-    .card:nth-child(4n + 3) h3,
-    .card:nth-child(4n + 4) h3 {
-      background: var(--card-header-band);
+    .card-head-actions {
+      display: flex;
+      flex: 0 0 auto;
+      gap: 5px;
+    }
+
+    .card-head-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(59,44,35,.16);
+      border-radius: 9px;
+      background: rgba(255,250,242,.72);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 17px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .card-head-action:hover,
+    .card-head-action:focus-visible {
+      background: #fffaf2;
+      border-color: var(--card-accent);
+      outline: none;
     }
 
     .badge {
@@ -477,17 +515,21 @@
       .card:nth-child(even) {
         border-top-color: var(--card-accent-band);
       }
-      .card h3 {
+      .card-head {
         margin: -18px -18px 0;
-        padding: 13px 18px 12px;
+        padding: 12px 10px 11px 18px;
         background: var(--card-header);
       }
-      .card:nth-child(4n + 3) h3,
-      .card:nth-child(4n + 4) h3 {
+      .card:nth-child(4n + 3) .card-head,
+      .card:nth-child(4n + 4) .card-head {
         background: var(--card-header);
       }
-      .card:nth-child(even) h3 {
+      .card:nth-child(even) .card-head {
         background: var(--card-header-band);
+      }
+      .card-head-action {
+        width: 32px;
+        height: 32px;
       }
       .fact { grid-template-columns: 74px minmax(0,1fr); }
     }
@@ -615,9 +657,68 @@
       return wrapper;
     }
 
+    function calendarUrl(event) {
+      const dates = (event.dates || []).slice().sort();
+      if (!dates.length) return "";
+
+      const start = dates[0].replaceAll("-", "");
+      const endDate = new Date(dates[dates.length - 1] + "T12:00:00");
+      endDate.setDate(endDate.getDate() + 1);
+      const end = [
+        endDate.getFullYear(),
+        String(endDate.getMonth() + 1).padStart(2, "0"),
+        String(endDate.getDate()).padStart(2, "0")
+      ].join("");
+
+      const details = [
+        event.summary || "",
+        event.time ? `Time: ${event.time}` : "",
+        event.price ? `Cost: ${event.price}` : "",
+        event.source_url ? `Details: ${event.source_url}` : ""
+      ].filter(Boolean).join("\n\n");
+
+      const params = new URLSearchParams({
+        action: "TEMPLATE",
+        text: event.title || "Weekend activity",
+        dates: `${start}/${end}`,
+        details,
+        location: event.address || event.venue || ""
+      });
+
+      return `https://calendar.google.com/calendar/render?${params.toString()}`;
+    }
+
     function card(event) {
       const article = el("article", "card");
-      article.append(el("h3", "", event.title || "Untitled event"));
+
+      const head = el("div", "card-head");
+      head.append(el("h3", "", event.title || "Untitled event"));
+
+      const headActions = el("div", "card-head-actions");
+
+      if (event.map_url) {
+        const directionsIcon = el("a", "card-head-action", "🗺️");
+        directionsIcon.href = event.map_url;
+        directionsIcon.target = "_blank";
+        directionsIcon.rel = "noopener";
+        directionsIcon.title = "Directions";
+        directionsIcon.setAttribute("aria-label", `Directions to ${event.title || "event"}`);
+        headActions.append(directionsIcon);
+      }
+
+      const calUrl = calendarUrl(event);
+      if (calUrl) {
+        const calendarIcon = el("a", "card-head-action", "📅");
+        calendarIcon.href = calUrl;
+        calendarIcon.target = "_blank";
+        calendarIcon.rel = "noopener";
+        calendarIcon.title = "Add to calendar";
+        calendarIcon.setAttribute("aria-label", `Add ${event.title || "event"} to calendar`);
+        headActions.append(calendarIcon);
+      }
+
+      head.append(headActions);
+      article.append(head);
 
       if (event.buy_now) {
         article.append(el("div", "badge", "⚠️ Plan ahead"));
@@ -641,14 +742,6 @@
       }
 
       const actions = el("div", "actions");
-
-      if (event.map_url) {
-        const directions = el("a", "", "🗺️ Directions");
-        directions.href = event.map_url;
-        directions.target = "_blank";
-        directions.rel = "noopener";
-        actions.append(directions);
-      }
 
       if (event.source_url) {
         const details = el("a", "", "↗ Event details");
