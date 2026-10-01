@@ -1,0 +1,263 @@
+{
+  "title": "Weekend Activities",
+  "generated_date": "2026-10-01",
+  "generated_at": "2026-10-01T08:58:00-04:00",
+  "center_zip": "20171",
+  "weekend_start": "2026-10-02",
+  "weekend_end": "2026-10-04",
+  "weather_note": "Friday looks hot and mostly dry, near the upper 80s. Saturday turns much cooler with shower chances increasing later in the day. Sunday has the highest rain chance, so keep an indoor backup such as Haunted Lab.",
+  "best_bet_ids": [
+    "cox-farms-fall-festival",
+    "vienna-oktoberfest",
+    "waterford-fair",
+    "salsa-in-the-park",
+    "adult-corn-maze-night",
+    "haunted-lab"
+  ],
+  "events": [
+    {
+      "id": "cox-farms-fall-festival",
+      "title": "Cox Farms Fall Festival",
+      "dates": [
+        "2026-10-02",
+        "2026-10-03",
+        "2026-10-04"
+      ],
+      "time": "10 AM–6 PM",
+      "venue": "Cox Farms",
+      "address": "15621 Braddock Rd, Centreville, VA 20120",
+      "area": "Centreville",
+      "price": "$20 Friday; $30 Saturday–Sunday; under 2 free",
+      "category": "Family / Fall",
+      "summary": "Hayrides, giant slides, farm animals, rope swings, themed play areas, Foamhenge, cider and a take-home patch pumpkin.",
+      "registration": "Tickets are online-only and busy dates can sell out.",
+      "buy_now": true,
+      "source_url": "https://coxfarmsva.com/fall-festival/fall-festival-tickets/",
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=15621%20Braddock%20Rd%2C%20Centreville%2C%20VA%2020120"
+    },
+    {
+      "id": "waterford-fair",
+      "title": "Waterford Fair",
+      "dates": [
+        "2026-10-02",
+        "2026-10-03",
+        "2026-10-04"
+      ],
+      "time": "10 AM–5 PM",
+      "venue": "Historic Waterford",
+      "address": "40222 Fairfax St, Waterford, VA 20197",
+      "area": "Waterford",
+      "price": "$20 advance / $25 gate for a 3-day pass; ages 12 and under free",
+      "category": "Festival / History / Arts",
+      "summary": "A historic-village fair with artisan demonstrations, living history, a juried art show, historic-property tours, food and entertainment.",
+      "registration": "Advance tickets save $5; the same general-admission pass is valid all weekend.",
+      "buy_now": false,
+      "source_url": "https://www.waterfordfairva.org/",
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=40222%20Fairfax%20St%2C%20Waterford%2C%20VA%2020197"
+    },
+    {
+      "id": "salsa-in-the-park",
+      "title": "Salsa in the Park",
+      "dates": [
+        "2026-10-02"
+      ],
+      "time": "4:30–6:30 PM",
+      "venue": "Alabama Drive Park",
+      "address": "1100 Alabama Dr, Herndon, VA 20170",
+      "area": "Herndon",
+      "price": "Free",
+      "category": "Free / Community / Family",
+      "summary": "A Hispanic Heritage Month celebration with a salsa workshop, cultural activities, nature and gardening activities, face painting, crafts and free vegetarian meals.",
+      "registration": "No registration required.",
+      "buy_now": false,
+      "source_url": "https://www.fairfaxcounty.gov/parks/node/16940",
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=1100%20Alabama%20Dr%2C%20Herndon%2C%20VA%2020170"
+    },
+    {
+      "id": "riverbend-family-fun-friday",
+      "title": "Family Fun Friday at Riverbend Park",
+      "dates": [
+        "2026-10-02"
+      ],
+      "time": "Noon–5 PM",
+      "venue": "Riverbend Park Nature Center",
+      "address": "8700 Potomac Hills St, Great Falls, VA 22066",
+      "area": "Great Falls",
+      "price": "$5 per person",
+      "category": "Family / Nature",
+      "summary": "Drop-in nature-center play with books, crafts, games, microscopes, sensory activities and short naturalist presentations.",
+      "registration": "Drop-in program; all ages.",
+      "buy_now": false,
+      "source_url": "https://www.fairfaxcounty.gov/parks/riverbend-park/",
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=8700%20Potomac%20Hills%20St%2C%20Great%20Falls%2C%20VA%2022066"
+    },
+    {
+      "id": "adult-corn-maze-night",
+      "title": "Adult Corn Maze Night",
+      "dates": [
+        "2026-10-02",
+        "2026-10-03"
+      ],
+      "time": "6–9 PM",
+      "venue": "Great Country Farms / Henway Hard Cider",
+      "address": "18780 Foggy Bottom Rd, Bluemont, VA 20135",
+      "area": "Bluemont",
+      "price": "$45",
+      "category": "Adults / Date Night / Fall",
+      "summary": "A 21+ nighttime corn-maze outing with bonfires, hard cider and live music.",
+      "registration": "Limited tickets; advance purchase recommended.",
+      "buy_now": true,
+      "source_url": "https://greatcountryfarms.com/adult-corn-maze-night/",
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=18780%20Foggy%20Bottom%20Rd%2C%20Bluemont%2C%20VA%2020135"
+    },
+    {
+      "id": "reston-farm-fall-fun-fest",
+      "title": "Reston Farm Fall Fun Fest",
+      "dates": [
+        "2026-10-03",
+        "2026-10-04"
+      ],
+      "time": "10 AM–5 PM",
+      "venue": "Reston Farm Garden Market",
+      "address": "10800 Baron Cameron Ave, Reston, VA 20190",
+      "area": "Reston",
+      "price": "Ticket required; children 2 and under free",
+      "category": "Family / Fall",
+      "summary": "A smaller fall outing with a train, inflatable corn maze, petting zoo, slides, moon bounces, music and cider donuts; geared mainly to ages 3–12.",
+      "registration": "Online sales close at 3 PM on event days; buying ahead saves on child tickets.",
+      "buy_now": false,
+      "source_url": "https://restonfarm.com/pages/fallfest",
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=10800%20Baron%20Cameron%20Ave%2C%20Reston%2C%20VA%2020190"
+    },
+    {
+      "id": "vienna-oktoberfest",
+      "title": "Vienna Oktoberfest",
+      "dates": [
+        "2026-10-03"
+      ],
+      "time": "11 AM–7 PM",
+      "venue": "Historic Church Street",
+      "address": "131 Church St NE, Vienna, VA 22180",
+      "area": "Vienna",
+      "price": "Free admission",
+      "category": "Free / Festival / Food & Drink",
+      "summary": "A large street festival with beer and wine, food, live entertainment, craft vendors and games and activities for kids and families.",
+      "registration": "No admission ticket required.",
+      "buy_now": false,
+      "source_url": "https://www.viennava.gov/Events-directory/Oktoberfest",
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=131%20Church%20St%20NE%2C%20Vienna%2C%20VA%2022180"
+    },
+    {
+      "id": "fiesta-fairfax",
+      "title": "Fiesta Fairfax",
+      "dates": [
+        "2026-10-03"
+      ],
+      "time": "2–7:30 PM",
+      "venue": "Old Town Square",
+      "address": "10415 North St, Fairfax, VA 22030",
+      "area": "Fairfax",
+      "price": "Free",
+      "category": "Free / Culture / Music",
+      "summary": "Hispanic Heritage Month celebration with mariachi and other live music, folklore dance performances, Latin food vendors, artisans and community organizations.",
+      "registration": "Free and open to the public.",
+      "buy_now": false,
+      "source_url": "https://www.fairfaxva.gov/Events-directory/Parks-and-Recreation/Cultural-Arts/Monthly-Celebrations/Hispanic-Heritage-Month-Events/Fiesta-Fairfax",
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=10415%20North%20St%2C%20Fairfax%2C%20VA%2022030"
+    },
+    {
+      "id": "haunted-lab",
+      "title": "Haunted Lab",
+      "dates": [
+        "2026-10-03",
+        "2026-10-04"
+      ],
+      "time": "Timed entries: 10 AM–noon, 1–3 PM, 3:30–5:30 PM",
+      "venue": "Children's Science Center Lab at Fair Oaks Mall",
+      "address": "11948L Fair Oaks Mall, Fairfax, VA 22033",
+      "area": "Fairfax / Fair Oaks",
+      "price": "$15; save $2 per ticket online",
+      "category": "Indoor / Family / STEM",
+      "summary": "A not-too-scary Halloween version of the Lab with glowing-creature searches, a spider launcher, spooky science activities and the Slime Piano.",
+      "registration": "Timed sessions have limited capacity; advance tickets are strongly encouraged.",
+      "buy_now": true,
+      "source_url": "https://childsci.org/events/haunted-lab-4",
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=11948L%20Fair%20Oaks%20Mall%2C%20Fairfax%2C%20VA%2022033"
+    },
+    {
+      "id": "goblin-golf",
+      "title": "Goblin Golf",
+      "dates": [
+        "2026-10-03",
+        "2026-10-04"
+      ],
+      "time": "11 AM–5 PM",
+      "venue": "Burke Lake Park",
+      "address": "7315 Ox Rd, Fairfax Station, VA 22039",
+      "area": "Fairfax Station",
+      "price": "$12 per person",
+      "category": "Family / Halloween",
+      "summary": "Halloween-themed mini golf with treats; costumes are welcome but not required.",
+      "registration": "Fairfax County recommends buying tickets before sessions sell out.",
+      "buy_now": true,
+      "source_url": "https://www.fairfaxcounty.gov/parks/burke-lake/events",
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=7315%20Ox%20Rd%2C%20Fairfax%20Station%2C%20VA%2022039"
+    },
+    {
+      "id": "great-country-farms-pumpkin-harvest",
+      "title": "Fall Pumpkin Harvest at Great Country Farms",
+      "dates": [
+        "2026-10-02",
+        "2026-10-03",
+        "2026-10-04"
+      ],
+      "time": "9 AM–5 PM",
+      "venue": "Great Country Farms",
+      "address": "18780 Foggy Bottom Rd, Bluemont, VA 20135",
+      "area": "Bluemont",
+      "price": "$16 Friday; $18 Saturday–Sunday; children 2 and under free",
+      "category": "Family / Fall / Farm",
+      "summary": "Pumpkin picking, corn maze, cider donuts, wagon rides, jumping pillows, giant slides, farm animals and weekend pumpkin cannons, plus live music Saturday and Sunday.",
+      "registration": "Advance tickets available; pumpkins are priced separately.",
+      "buy_now": false,
+      "source_url": "https://greatcountryfarms.com/festivals-events/fall-pumpkin-harvest-festival/",
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=18780%20Foggy%20Bottom%20Rd%2C%20Bluemont%2C%20VA%2020135"
+    },
+    {
+      "id": "mclean-artfest",
+      "title": "McLean Artfest",
+      "dates": [
+        "2026-10-04"
+      ],
+      "time": "10 AM–4 PM",
+      "venue": "McLean Central Park",
+      "address": "1468 Dolley Madison Blvd, McLean, VA 22101",
+      "area": "McLean",
+      "price": "Free",
+      "category": "Free / Arts / Family",
+      "summary": "A one-day juried arts festival with 30+ artists, children's art activities, food trucks, interactive art, live music and a beer and wine garden.",
+      "registration": "Free admission.",
+      "buy_now": false,
+      "source_url": "https://mcleancenter.org/events/mclean-artfest/?occurrence=2026-10-04",
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=1468%20Dolley%20Madison%20Blvd%2C%20McLean%2C%20VA%2022101"
+    },
+    {
+      "id": "reston-fall-5k-pumpkin-dash",
+      "title": "Friends of Reston Fall 5K & Pumpkin Dash",
+      "dates": [
+        "2026-10-04"
+      ],
+      "time": "8–10 AM",
+      "venue": "Brown's Chapel Park",
+      "address": "1525 Brown's Chapel Rd, Reston, VA 20191",
+      "area": "Reston",
+      "price": "Pumpkin Dash free; 5K requires registration",
+      "category": "Family / Fitness / Community",
+      "summary": "The free kids' Pumpkin Dash starts at 8 AM, followed by the 5K at 8:15 on Reston's paved trails; Pumpkin Dash finishers receive a small pumpkin.",
+      "registration": "Register for the 5K through the organizer; the Pumpkin Dash is free.",
+      "buy_now": true,
+      "source_url": "https://www.reston.org/Calendar.aspx?EID=1497&calType=0&day=1&month=10&year=2026",
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=1525%20Brown%27s%20Chapel%20Rd%2C%20Reston%2C%20VA%2020191"
+    }
+  ]
+}
