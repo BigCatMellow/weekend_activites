@@ -9,10 +9,10 @@
   "best_bet_ids": [
     "cox-farms-fall-festival",
     "vienna-oktoberfest",
-    "waterford-fair",
-    "salsa-in-the-park",
-    "adult-corn-maze-night",
-    "haunted-lab"
+    "haunted-lab",
+    "manassas-fall-jubilee",
+    "state-fair-of-virginia",
+    "maryland-renaissance-festival"
   ],
   "events": [
     {
@@ -33,7 +33,8 @@
       "registration": "Tickets are online-only and busy dates can sell out.",
       "buy_now": true,
       "source_url": "https://coxfarmsva.com/fall-festival/fall-festival-tickets/",
-      "map_url": "https://www.google.com/maps/dir/?api=1&destination=15621%20Braddock%20Rd%2C%20Centreville%2C%20VA%2020120"
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=15621%20Braddock%20Rd%2C%20Centreville%2C%20VA%2020120",
+      "scope": "local"
     },
     {
       "id": "waterford-fair",
@@ -53,7 +54,8 @@
       "registration": "Advance tickets save $5; the same general-admission pass is valid all weekend.",
       "buy_now": false,
       "source_url": "https://www.waterfordfairva.org/",
-      "map_url": "https://www.google.com/maps/dir/?api=1&destination=40222%20Fairfax%20St%2C%20Waterford%2C%20VA%2020197"
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=40222%20Fairfax%20St%2C%20Waterford%2C%20VA%2020197",
+      "scope": "nova_plus"
     },
     {
       "id": "salsa-in-the-park",
@@ -71,7 +73,8 @@
       "registration": "No registration required.",
       "buy_now": false,
       "source_url": "https://www.fairfaxcounty.gov/parks/node/16940",
-      "map_url": "https://www.google.com/maps/dir/?api=1&destination=1100%20Alabama%20Dr%2C%20Herndon%2C%20VA%2020170"
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=1100%20Alabama%20Dr%2C%20Herndon%2C%20VA%2020170",
+      "scope": "local"
     },
     {
       "id": "riverbend-family-fun-friday",
@@ -89,7 +92,8 @@
       "registration": "Drop-in program; all ages.",
       "buy_now": false,
       "source_url": "https://www.fairfaxcounty.gov/parks/riverbend-park/",
-      "map_url": "https://www.google.com/maps/dir/?api=1&destination=8700%20Potomac%20Hills%20St%2C%20Great%20Falls%2C%20VA%2022066"
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=8700%20Potomac%20Hills%20St%2C%20Great%20Falls%2C%20VA%2022066",
+      "scope": "local"
     },
     {
       "id": "adult-corn-maze-night",
@@ -108,7 +112,8 @@
       "registration": "Limited tickets; advance purchase recommended.",
       "buy_now": true,
       "source_url": "https://greatcountryfarms.com/adult-corn-maze-night/",
-      "map_url": "https://www.google.com/maps/dir/?api=1&destination=18780%20Foggy%20Bottom%20Rd%2C%20Bluemont%2C%20VA%2020135"
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=18780%20Foggy%20Bottom%20Rd%2C%20Bluemont%2C%20VA%2020135",
+      "scope": "nova_plus"
     },
     {
       "id": "reston-farm-fall-fun-fest",
@@ -127,7 +132,8 @@
       "registration": "Online sales close at 3 PM on event days; buying ahead saves on child tickets.",
       "buy_now": false,
       "source_url": "https://restonfarm.com/pages/fallfest",
-      "map_url": "https://www.google.com/maps/dir/?api=1&destination=10800%20Baron%20Cameron%20Ave%2C%20Reston%2C%20VA%2020190"
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=10800%20Baron%20Cameron%20Ave%2C%20Reston%2C%20VA%2020190",
+      "scope": "local"
     },
     {
       "id": "vienna-oktoberfest",
@@ -145,7 +151,8 @@
       "registration": "No admission ticket required.",
       "buy_now": false,
       "source_url": "https://www.viennava.gov/Events-directory/Oktoberfest",
-      "map_url": "https://www.google.com/maps/dir/?api=1&destination=131%20Church%20St%20NE%2C%20Vienna%2C%20VA%2022180"
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=131%20Church%20St%20NE%2C%20Vienna%2C%20VA%2022180",
+      "scope": "local"
     },
     {
       "id": "fiesta-fairfax",
@@ -163,7 +170,8 @@
       "registration": "Free and open to the public.",
       "buy_now": false,
       "source_url": "https://www.fairfaxva.gov/Events-directory/Parks-and-Recreation/Cultural-Arts/Monthly-Celebrations/Hispanic-Heritage-Month-Events/Fiesta-Fairfax",
-      "map_url": "https://www.google.com/maps/dir/?api=1&destination=10415%20North%20St%2C%20Fairfax%2C%20VA%2022030"
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=10415%20North%20St%2C%20Fairfax%2C%20VA%2022030",
+      "scope": "local"
     },
     {
       "id": "haunted-lab",
@@ -182,7 +190,8 @@
       "registration": "Timed sessions have limited capacity; advance tickets are strongly encouraged.",
       "buy_now": true,
       "source_url": "https://childsci.org/events/haunted-lab-4",
-      "map_url": "https://www.google.com/maps/dir/?api=1&destination=11948L%20Fair%20Oaks%20Mall%2C%20Fairfax%2C%20VA%2022033"
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=11948L%20Fair%20Oaks%20Mall%2C%20Fairfax%2C%20VA%2022033",
+      "scope": "local"
     },
     {
       "id": "goblin-golf",
@@ -201,7 +210,8 @@
       "registration": "Fairfax County recommends buying tickets before sessions sell out.",
       "buy_now": true,
       "source_url": "https://www.fairfaxcounty.gov/parks/burke-lake/events",
-      "map_url": "https://www.google.com/maps/dir/?api=1&destination=7315%20Ox%20Rd%2C%20Fairfax%20Station%2C%20VA%2022039"
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=7315%20Ox%20Rd%2C%20Fairfax%20Station%2C%20VA%2022039",
+      "scope": "local"
     },
     {
       "id": "great-country-farms-pumpkin-harvest",
@@ -221,7 +231,8 @@
       "registration": "Advance tickets available; pumpkins are priced separately.",
       "buy_now": false,
       "source_url": "https://greatcountryfarms.com/festivals-events/fall-pumpkin-harvest-festival/",
-      "map_url": "https://www.google.com/maps/dir/?api=1&destination=18780%20Foggy%20Bottom%20Rd%2C%20Bluemont%2C%20VA%2020135"
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=18780%20Foggy%20Bottom%20Rd%2C%20Bluemont%2C%20VA%2020135",
+      "scope": "nova_plus"
     },
     {
       "id": "mclean-artfest",
@@ -239,7 +250,8 @@
       "registration": "Free admission.",
       "buy_now": false,
       "source_url": "https://mcleancenter.org/events/mclean-artfest/?occurrence=2026-10-04",
-      "map_url": "https://www.google.com/maps/dir/?api=1&destination=1468%20Dolley%20Madison%20Blvd%2C%20McLean%2C%20VA%2022101"
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=1468%20Dolley%20Madison%20Blvd%2C%20McLean%2C%20VA%2022101",
+      "scope": "local"
     },
     {
       "id": "reston-fall-5k-pumpkin-dash",
@@ -257,7 +269,101 @@
       "registration": "Register for the 5K through the organizer; the Pumpkin Dash is free.",
       "buy_now": true,
       "source_url": "https://www.reston.org/Calendar.aspx?EID=1497&calType=0&day=1&month=10&year=2026",
-      "map_url": "https://www.google.com/maps/dir/?api=1&destination=1525%20Brown%27s%20Chapel%20Rd%2C%20Reston%2C%20VA%2020191"
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=1525%20Brown%27s%20Chapel%20Rd%2C%20Reston%2C%20VA%2020191",
+      "scope": "local"
+    },
+    {
+      "id": "douglass-legacy-day",
+      "title": "Douglass Legacy Day",
+      "scope": "nova_plus",
+      "dates": [
+        "2026-10-03"
+      ],
+      "time": "Noon–5 PM",
+      "venue": "Historic Douglass High School Education & Development Campus",
+      "address": "407 E Market St, Leesburg, VA 20176",
+      "area": "Leesburg",
+      "price": "Free",
+      "category": "Free / History / Family / Community",
+      "summary": "A free celebration of Loudoun County's historic Douglass High School with live music, educational activities, historical bingo and scavenger hunts, face painting, lawn games, vendors and food.",
+      "registration": "Free; held rain or shine.",
+      "buy_now": false,
+      "source_url": "https://www.loudoun.gov/DouglassLegacyDay"
+    },
+    {
+      "id": "manassas-fall-jubilee",
+      "title": "Manassas Fall Jubilee",
+      "scope": "nova_plus",
+      "dates": [
+        "2026-10-03"
+      ],
+      "time": "10 AM–5 PM",
+      "venue": "Historic Downtown Manassas",
+      "address": "9431 West St, Manassas, VA 20110",
+      "area": "Manassas",
+      "price": "Free",
+      "category": "Free / Festival / Fall / Family",
+      "summary": "Downtown fall festival with 100+ craft and community booths, food and drinks, live music, entertainment and family activities.",
+      "registration": "Free admission.",
+      "buy_now": false,
+      "source_url": "https://historicmanassas.org/event/43rd-annual-manassas-fall-jubilee/"
+    },
+    {
+      "id": "art-on-the-avenue-alexandria",
+      "title": "Art on the Avenue",
+      "scope": "nova_plus",
+      "dates": [
+        "2026-10-03"
+      ],
+      "time": "10 AM–6 PM",
+      "venue": "Mount Vernon Avenue in Del Ray",
+      "address": "Mount Vernon Ave, Alexandria, VA 22301",
+      "area": "Alexandria / Del Ray",
+      "price": "Free",
+      "category": "Free / Arts / Festival / Family",
+      "summary": "A large Del Ray arts festival with 300+ artists, live music, food vendors and hands-on kids' activities spread along Mount Vernon Avenue.",
+      "registration": "Free admission.",
+      "buy_now": false,
+      "source_url": "https://apps.alexandriava.gov/Calendar/Detail.aspx?si=63637"
+    },
+    {
+      "id": "state-fair-of-virginia",
+      "title": "State Fair of Virginia",
+      "scope": "nova_plus",
+      "dates": [
+        "2026-10-02",
+        "2026-10-03",
+        "2026-10-04"
+      ],
+      "time": "10 AM–10 PM",
+      "venue": "The Meadow Event Park",
+      "address": "13048 Meadow Farm Rd, Doswell, VA 23047",
+      "area": "Doswell",
+      "price": "Ticketed; rides are separate",
+      "category": "Major Event / Fair / Family",
+      "summary": "Virginia's statewide fair with agricultural exhibits and competitions, animals, concerts and shows, food, a midway and Kidway, plus special attractions across the Meadow Event Park.",
+      "registration": "General parking is free; check the official ticket page for current admission options.",
+      "buy_now": false,
+      "source_url": "https://www.statefairva.org/p/about/ticket-info-and-hours"
+    },
+    {
+      "id": "maryland-renaissance-festival",
+      "title": "Maryland Renaissance Festival",
+      "scope": "nova_plus",
+      "dates": [
+        "2026-10-03",
+        "2026-10-04"
+      ],
+      "time": "10 AM–7 PM",
+      "venue": "Revel Grove",
+      "address": "1821 Crownsville Rd, Annapolis, MD 21401",
+      "area": "Crownsville / Annapolis, MD",
+      "price": "$31 adult; $17 ages 7–15; ages 6 and under free; taxes/fees extra",
+      "category": "Major Event / Renaissance / Family",
+      "summary": "A 27-acre Renaissance village with 200+ performers on ten stages, armored jousting, costumed characters, 140+ artisans, taverns and extensive festival food; October weekends add Harvest Hollow seasonal theming.",
+      "registration": "Tickets are online-only and date-specific; children 6 and under still require a free ticket.",
+      "buy_now": true,
+      "source_url": "https://rennfest.com/faqs/"
     }
   ],
   "forecast": [
