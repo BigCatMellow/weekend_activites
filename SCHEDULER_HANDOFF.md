@@ -57,11 +57,21 @@ If a detail cannot be verified, use concise language such as "Price not confirme
 
 ## Weather
 
-Include a short `weather_note` when weather materially affects planning.
+Include a structured Friday-Sunday forecast in `forecast` plus a short overall `weather_note`.
 
-It should be practical rather than a full forecast, for example:
+For each day, include:
 
-> Saturday looks best for outdoor plans; showers are possible Sunday afternoon, so keep an indoor backup.
+- `date`
+- `high_f`
+- `low_f`
+- `conditions`
+- `notable` — one concise planning note, especially timing that matters (for example, "showers most likely after 2 PM", "gusty after sunset", or "dry through early afternoon")
+
+Use a current, reputable forecast source and do not invent hour-specific timing. If the available forecast does not support a useful timing claim, keep `notable` broad and accurate.
+
+The overall `weather_note` should synthesize the weekend into one practical takeaway, for example:
+
+> Friday is the best outdoor day. Saturday is cooler, and Sunday looks wettest, so keep an indoor backup.
 
 ## Best Bets
 
@@ -128,6 +138,29 @@ Top-level shape:
     "weekend_start": "YYYY-MM-DD",
     "weekend_end": "YYYY-MM-DD",
     "weather_note": "Short practical weekend weather note",
+    "forecast": [
+      {
+        "date": "YYYY-MM-DD",
+        "high_f": 72,
+        "low_f": 54,
+        "conditions": "Partly cloudy",
+        "notable": "Dry through the afternoon; showers possible after 7 PM."
+      },
+      {
+        "date": "YYYY-MM-DD",
+        "high_f": 65,
+        "low_f": 51,
+        "conditions": "Cloudy",
+        "notable": "Cooler all day."
+      },
+      {
+        "date": "YYYY-MM-DD",
+        "high_f": 63,
+        "low_f": 52,
+        "conditions": "Showers",
+        "notable": "Rain most likely late morning through afternoon."
+      }
+    ],
     "best_bet_ids": ["event-id-1", "event-id-2"],
     "events": [
       {
