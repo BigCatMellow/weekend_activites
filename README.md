@@ -22,7 +22,7 @@ No separate build step is required.
 The site includes:
 
 - weekend dates and weather note;
-- Local and NoVA+ tabs;
+- Local and NoVA+ tabs in the top-right;
 - a Best Bets section within each scope when applicable;
 - Friday, Saturday, and Sunday sections;
 - concrete event descriptions;
@@ -30,7 +30,7 @@ The site includes:
 - Plan Ahead warnings;
 - one-click Google Maps directions;
 - links to the official event source;
-- responsive light/dark styling for desktop and mobile.
+- responsive fall styling for desktop and mobile.
 
 
 A weekly Thursday roundup of things to do around ZIP code **20171** (Herndon / Oak Hill / Chantilly / Fairfax County), delivered by email through the existing `BigCatMellow/Notes` SMTP setup.
