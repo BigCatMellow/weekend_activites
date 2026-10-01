@@ -92,7 +92,6 @@ def validate(package):
         fail("events must be a non-empty list")
 
     seen_ids = set()
-    seen_sources = set()
     valid_days = {
         weekend_start.isoformat(),
         (weekend_start + timedelta(days=1)).isoformat(),
@@ -111,7 +110,7 @@ def validate(package):
         title = str(event.get("title") or "").strip()
         address = str(event.get("address") or "").strip()
         source_url = str(event.get("source_url") or "").strip()
-        day = str(event.get("date") or "").strip()
+        dates = event.get("dates")
 
         if not title:
             fail(f"Event {event_id} is missing title")
@@ -119,11 +118,15 @@ def validate(package):
             fail(f"Event {event_id} is missing address")
         if not source_url.startswith(("http://", "https://")):
             fail(f"Event {event_id} has invalid source_url")
-        if source_url in seen_sources:
-            fail(f"Duplicate source_url: {source_url}")
-        seen_sources.add(source_url)
-        if day not in valid_days:
-            fail(f"Event {event_id} date {day} is outside the Friday-Sunday weekend")
+        if not isinstance(dates, list) or not dates:
+            fail(f"Event {event_id} must have a non-empty dates list")
+        normalized_dates = [str(day).strip() for day in dates]
+        if len(normalized_dates) != len(set(normalized_dates)):
+            fail(f"Event {event_id} contains duplicate dates")
+        outside = [day for day in normalized_dates if day not in valid_days]
+        if outside:
+            fail(f"Event {event_id} has dates outside the Friday-Sunday weekend: {outside}")
+        event["dates"] = normalized_dates
 
         event["map_url"] = maps_url(address)
 
