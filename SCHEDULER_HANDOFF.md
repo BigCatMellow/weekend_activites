@@ -22,7 +22,7 @@ The scheduled task should not write publication files directly.
 
 Research in two explicit scopes:
 
-### Local
+### local
 
 Center this on **20171 / Herndon-Oak Hill-Chantilly** and the practical nearby orbit: Herndon, Reston, Chantilly, Centreville, Fairfax, Vienna, Great Falls, Sterling, Ashburn, McLean, Burke, and similarly close destinations.
 
@@ -64,7 +64,7 @@ Every event must be assigned a `scope`:
 - `local` — practical nearby outing from 20171
 - `nova_plus` — broader Northern Virginia or a major regional destination event
 
-The website uses this field for the **Local** and **nova+** tabs. Prefer enough useful events in both scopes for the tabs to be meaningful, but do not force weak nova+ picks.
+The website uses this field for the **local** and **nova+** tabs. Prefer enough useful events in both scopes for the tabs to be meaningful, but do not force weak nova+ picks.
 
 ## Source quality
 
@@ -105,7 +105,7 @@ The overall `weather_note` should also be short and scannable, preferably one co
 
 Choose roughly **4-6** when the event pool supports it.
 
-Best Bets should be deliberately varied rather than six versions of the same outing. Include strong picks from both Local and nova+ when warranted. A useful mix might include:
+Best Bets should be deliberately varied rather than six versions of the same outing. Include strong picks from both local and nova+ when warranted. A useful mix might include:
 
 - one strong family option;
 - one free/community option;
