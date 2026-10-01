@@ -77,14 +77,14 @@ If the token used by Morning Edition was saved somewhere safe, the same token ca
 
 After `NOTES_TRIGGER_TOKEN` is configured:
 
-1. Open **Actions** in this repository.
-2. Run **Publish Weekend Activities request** only by submitting a valid publish issue; the normal scheduled task will do this automatically.
-3. Or run the Notes workflow **Weekend Activities email** manually after `data/latest.json` exists.
+1. Let the Thursday scheduled task create the publish issue, or create a valid owner-authored publish issue manually using `SCHEDULER_HANDOFF.md`.
+2. Confirm the **Publish Weekend Activities request** workflow succeeds and writes `data/latest.json`.
+3. In `BigCatMellow/Notes`, the **Weekend Activities email** workflow should run automatically when its trigger file changes; it can also be run manually after `data/latest.json` exists.
 
 ## Failure behavior
 
 - Invalid or stale packages do not publish.
-- Duplicate event source URLs are rejected.
+- Events are deduplicated by stable event id; one event can cover multiple weekend dates.
 - Events without a usable address or source URL are rejected.
 - Publication is committed before the email trigger is touched.
 - The committed file is re-read and validated before the trigger advances.
