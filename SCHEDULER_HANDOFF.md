@@ -96,7 +96,7 @@ Example:
   "area": "Centreville",
   "price": "$20 Friday; $30 Saturday-Sunday",
   "category": "Family / Fall",
-  "summary": "Hayrides, slides, animals, fall attractions, and seasonal food.",
+  "summary": "A large fall farm festival where you can take a hayride, ride giant slides, visit farm animals, explore themed play areas and Foamhenge, and get seasonal food and cider.",
   "registration": "Online tickets required.",
   "buy_now": true,
   "source_url": "https://example.com/event"
@@ -140,7 +140,7 @@ Top-level shape:
         "area": "City / neighborhood",
         "price": "Free / price / concise range",
         "category": "Short category",
-        "summary": "One concise useful description",
+        "summary": "One or two sentences explaining what the event actually is and what someone can do, see, hear, eat, explore, or participate in there",
         "registration": "Registration/ticket note if applicable",
         "buy_now": false,
         "source_url": "https://current-source.example/event"
@@ -165,7 +165,7 @@ Strongly preferred:
 - `area`
 - `price`
 - `category`
-- `summary`
+- `summary` — required in practice: write one or two concrete sentences that answer "what would I actually do there?" Avoid generic phrases such as "fun for the whole family" unless they are supported by specific activities.
 - `registration`
 - `buy_now`
 
