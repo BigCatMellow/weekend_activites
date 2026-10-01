@@ -37,3 +37,24 @@ Openclipart states that its clipart is released under Creative Commons Zero / in
 https://openclipart.org/share
 
 Attribution is not required for these assets, but the source information is retained here for provenance.
+
+
+## Oak-leaf and acorn flourish
+
+- File: `Oak-leaf and acorn ornament, Serões, 1901.svg`
+- Source page: https://commons.wikimedia.org/wiki/File:Oak-leaf_and_acorn_ornament,_Ser%C3%B5es,_1901.svg
+- Direct asset: https://upload.wikimedia.org/wikipedia/commons/e/e3/Oak-leaf_and_acorn_ornament%2C_Ser%C3%B5es%2C_1901.svg
+- Original publication: `Serões` magazine, 1901
+- Author: Anonymous
+- License: Public domain (published before 1931)
+
+## Leaf corner flourish
+
+- File: `LF Ornament Black Right Up.svg`
+- Source page: https://commons.wikimedia.org/wiki/File:LF_Ornament_Black_Right_Up.svg
+- Direct asset: https://upload.wikimedia.org/wikipedia/commons/e/ef/LF_Ornament_Black_Right_Up.svg
+- Source: old dingbat ornament
+- Author: unknown
+- License: CC0 1.0 Universal / public domain dedication
+
+These two assets are used as low-opacity decorative flourishes. They occupy only part of the upper card edge and are intentionally secondary to event information.
