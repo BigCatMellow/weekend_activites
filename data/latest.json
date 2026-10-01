@@ -288,7 +288,8 @@
       "summary": "A free celebration of Loudoun County's historic Douglass High School with live music, educational activities, historical bingo and scavenger hunts, face painting, lawn games, vendors and food.",
       "registration": "Free; held rain or shine.",
       "buy_now": false,
-      "source_url": "https://www.loudoun.gov/DouglassLegacyDay"
+      "source_url": "https://www.loudoun.gov/DouglassLegacyDay",
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=407%20E%20Market%20St%2C%20Leesburg%2C%20VA%2020176"
     },
     {
       "id": "manassas-fall-jubilee",
@@ -306,7 +307,8 @@
       "summary": "Downtown fall festival with 100+ craft and community booths, food and drinks, live music, entertainment and family activities.",
       "registration": "Free admission.",
       "buy_now": false,
-      "source_url": "https://historicmanassas.org/event/43rd-annual-manassas-fall-jubilee/"
+      "source_url": "https://historicmanassas.org/event/43rd-annual-manassas-fall-jubilee/",
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=9431%20West%20St%2C%20Manassas%2C%20VA%2020110"
     },
     {
       "id": "art-on-the-avenue-alexandria",
@@ -324,7 +326,8 @@
       "summary": "A large Del Ray arts festival with 300+ artists, live music, food vendors and hands-on kids' activities spread along Mount Vernon Avenue.",
       "registration": "Free admission.",
       "buy_now": false,
-      "source_url": "https://apps.alexandriava.gov/Calendar/Detail.aspx?si=63637"
+      "source_url": "https://apps.alexandriava.gov/Calendar/Detail.aspx?si=63637",
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=Mount%20Vernon%20Ave%2C%20Alexandria%2C%20VA%2022301"
     },
     {
       "id": "state-fair-of-virginia",
@@ -344,7 +347,8 @@
       "summary": "Virginia's statewide fair with agricultural exhibits and competitions, animals, concerts and shows, food, a midway and Kidway, plus special attractions across the Meadow Event Park.",
       "registration": "General parking is free; check the official ticket page for current admission options.",
       "buy_now": false,
-      "source_url": "https://www.statefairva.org/p/about/ticket-info-and-hours"
+      "source_url": "https://www.statefairva.org/p/about/ticket-info-and-hours",
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=13048%20Meadow%20Farm%20Rd%2C%20Doswell%2C%20VA%2023047"
     },
     {
       "id": "maryland-renaissance-festival",
@@ -363,7 +367,8 @@
       "summary": "A 27-acre Renaissance village with 200+ performers on ten stages, armored jousting, costumed characters, 140+ artisans, taverns and extensive festival food; October weekends add Harvest Hollow seasonal theming.",
       "registration": "Tickets are online-only and date-specific; children 6 and under still require a free ticket.",
       "buy_now": true,
-      "source_url": "https://rennfest.com/faqs/"
+      "source_url": "https://rennfest.com/faqs/",
+      "map_url": "https://www.google.com/maps/dir/?api=1&destination=1821%20Crownsville%20Rd%2C%20Annapolis%2C%20MD%2021401"
     }
   ],
   "forecast": [
