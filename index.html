@@ -153,6 +153,72 @@
 
     .weather strong { color: var(--text); }
 
+    .forecast-title {
+      margin: 0 0 10px;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .forecast-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .forecast-day {
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+
+    .forecast-day-name {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .forecast-temp {
+      margin-top: 3px;
+      color: var(--text);
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.15;
+    }
+
+    .forecast-temp span {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .forecast-condition {
+      margin-top: 4px;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .forecast-note {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .forecast-summary {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
     .jump {
       display: flex;
       gap: 8px;
@@ -357,6 +423,7 @@
       .topbar { justify-content: flex-start; margin-bottom: 8px; }
       .hero { padding: 24px 20px 22px; border-radius: 14px; }
       .grid, .best-grid { grid-template-columns: 1fr; }
+      .forecast-grid { grid-template-columns: 1fr; }
       .section { margin-top: 34px; }
       .section-head { align-items: flex-end; }
       .card { padding: 18px; }
@@ -618,8 +685,49 @@
         document.title = `Weekend Activities · ${weekendRange(report)}`;
         document.getElementById("weekend").textContent = weekendRange(report);
 
-        if (report.weather_note) {
-          const weather = document.getElementById("weather");
+        const weather = document.getElementById("weather");
+        const forecast = report.forecast || [];
+
+        if (forecast.length) {
+          weather.hidden = false;
+          weather.append(el("div", "forecast-title", "Weekend forecast"));
+
+          const forecastGrid = el("div", "forecast-grid");
+          forecast.forEach(day => {
+            const panel = el("div", "forecast-day");
+            const dateValue = parseDate(day.date);
+            panel.append(
+              el(
+                "div",
+                "forecast-day-name",
+                new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(dateValue)
+              )
+            );
+
+            const temp = el("div", "forecast-temp");
+            temp.append(
+              document.createTextNode(`${Math.round(day.high_f)}° `),
+              (() => {
+                const low = el("span", "", `/ ${Math.round(day.low_f)}°`);
+                return low;
+              })()
+            );
+            panel.append(temp);
+
+            if (day.conditions) {
+              panel.append(el("div", "forecast-condition", day.conditions));
+            }
+            if (day.notable) {
+              panel.append(el("div", "forecast-note", day.notable));
+            }
+            forecastGrid.append(panel);
+          });
+          weather.append(forecastGrid);
+
+          if (report.weather_note) {
+            weather.append(el("div", "forecast-summary", report.weather_note));
+          }
+        } else if (report.weather_note) {
           weather.hidden = false;
           const strong = el("strong", "", "Weather: ");
           weather.append(strong, document.createTextNode(report.weather_note));
