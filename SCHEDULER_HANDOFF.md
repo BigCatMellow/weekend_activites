@@ -20,7 +20,26 @@ The scheduled task should not write publication files directly.
 
 ## Research scope
 
-Center the search on **20171 / Herndon-Oak Hill-Chantilly**, but include worthwhile options in the broader practical driving area, including Reston, Centreville, Fairfax, Vienna, Great Falls, Sterling, Ashburn, Leesburg, McLean, Burke, and similar nearby destinations.
+Research in two explicit scopes:
+
+### Local
+
+Center this on **20171 / Herndon-Oak Hill-Chantilly** and the practical nearby orbit: Herndon, Reston, Chantilly, Centreville, Fairfax, Vienna, Great Falls, Sterling, Ashburn, McLean, Burke, and similarly close destinations.
+
+### NoVA+
+
+Search the broader Northern Virginia region as well, including **Leesburg, Manassas, Alexandria, Arlington, Falls Church, Woodbridge, Gainesville, Purcellville, Middleburg, Lorton, Occoquan**, and other worthwhile Northern Virginia destinations.
+
+Also include a small number of **major worth-the-drive regional events** outside Northern Virginia when they are genuinely notable, especially large annual events such as:
+
+- State Fair of Virginia
+- Maryland Renaissance Festival
+- major state/county fairs
+- large seasonal festivals
+- major museum, cultural, food, or holiday events
+- unusually strong one-off events that justify the longer drive
+
+Do not pad NoVA+ with ordinary distant events. Distance needs a reason.
 
 Search deliberately across:
 
@@ -39,6 +58,13 @@ Search deliberately across:
 - unusual one-off events that would be easy to miss
 
 The goal is broad coverage, not a tiny recommendation list. Do not omit good options merely because they are not one of the Best Bets.
+
+Every event must be assigned a `scope`:
+
+- `local` — practical nearby outing from 20171
+- `nova_plus` — broader Northern Virginia or a major regional destination event
+
+The website uses this field for the **Local** and **NoVA+** tabs. Prefer enough useful events in both scopes for the tabs to be meaningful, but do not force weak NoVA+ picks.
 
 ## Source quality
 
@@ -79,7 +105,7 @@ The overall `weather_note` should also be short and scannable, preferably one co
 
 Choose roughly **4-6** when the event pool supports it.
 
-Best Bets should be deliberately varied rather than six versions of the same outing. A useful mix might include:
+Best Bets should be deliberately varied rather than six versions of the same outing. Include strong picks from both Local and NoVA+ when warranted. A useful mix might include:
 
 - one strong family option;
 - one free/community option;
@@ -101,6 +127,7 @@ Example:
 {
   "id": "cox-farms-fall-festival",
   "title": "Cox Farms Fall Festival",
+  "scope": "local",
   "dates": ["2026-10-02", "2026-10-03", "2026-10-04"],
   "time": "10 AM-6 PM",
   "venue": "Cox Farms",
@@ -168,6 +195,7 @@ Top-level shape:
       {
         "id": "stable-short-id",
         "title": "Event title",
+        "scope": "local",
         "dates": ["YYYY-MM-DD"],
         "time": "Human-readable time",
         "venue": "Venue name",
@@ -189,6 +217,7 @@ Required event fields:
 
 - `id`
 - `title`
+- `scope` — `local` or `nova_plus`
 - `dates` (one or more of the coming Friday/Saturday/Sunday)
 - `address`
 - `source_url`
