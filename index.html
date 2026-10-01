@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="light">
   <title>Weekend Activities · 20171</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
@@ -40,6 +43,7 @@
       --forecast-sun-bg: #eef0f5;
       --forecast-sun-border: #c7ccd8;
       --forecast-sun-label: #636a7d;
+      --font-display: "Roboto Slab", Georgia, ui-serif, serif;
     }
 
     * { box-sizing: border-box; }
@@ -128,10 +132,11 @@
 
     h1 {
       margin: 0;
+      font-family: var(--font-display);
       color: var(--text);
       font-size: clamp(34px, 7vw, 52px);
       line-height: 1.03;
-      letter-spacing: -.035em;
+      letter-spacing: -.025em;
     }
 
     .weekend {
@@ -284,9 +289,10 @@
 
     .section-head h2 {
       margin: 0;
+      font-family: var(--font-display);
       color: var(--accent);
       font-size: 25px;
-      letter-spacing: -.02em;
+      letter-spacing: -.01em;
     }
 
     .section-head span {
@@ -345,6 +351,7 @@
 
     .card h3 {
       margin: 0;
+      font-family: var(--font-display);
       min-width: 0;
       color: var(--text);
       font-size: 21px;
