@@ -27,10 +27,10 @@
       --card-header-band: #d8d6ad;
       --card-accent: #a64f24;
       --card-accent-band: #6f713f;
-      --action-marker: #7d4710;
-      --action-marker-hover: #60350b;
-      --action-calendar: #5f6738;
-      --action-calendar-hover: #464d29;
+      --action-brown: #7d4710;
+      --action-brown-hover: #60350b;
+      --action-green: #5f6738;
+      --action-green-hover: #464d29;
       --forecast-fri-bg: #fff1d2;
       --forecast-fri-border: #e4c17a;
       --forecast-fri-label: #a65321;
@@ -304,6 +304,8 @@
     }
 
     .card {
+      --action-pair: var(--action-brown);
+      --action-pair-hover: var(--action-brown-hover);
       position: relative;
       overflow: hidden;
       display: flex;
@@ -319,6 +321,8 @@
 
     .card:nth-child(4n + 3),
     .card:nth-child(4n + 4) {
+      --action-pair: var(--action-green);
+      --action-pair-hover: var(--action-green-hover);
       border-top-color: var(--card-accent-band);
     }
 
@@ -380,26 +384,20 @@
     }
 
     .action-icon-marker {
-      color: var(--action-marker);
+      color: var(--action-pair);
       -webkit-mask-image: url("./assets/icons/marker.svg");
       mask-image: url("./assets/icons/marker.svg");
     }
 
     .action-icon-calendar {
-      color: var(--action-calendar);
+      color: var(--action-pair);
       -webkit-mask-image: url("./assets/icons/calendar-day.svg");
       mask-image: url("./assets/icons/calendar-day.svg");
     }
 
-    .card-head-action:hover .action-icon-marker,
-    .card-head-action:focus-visible .action-icon-marker {
-      color: var(--action-marker-hover);
-      transform: scale(1.04);
-    }
-
-    .card-head-action:hover .action-icon-calendar,
-    .card-head-action:focus-visible .action-icon-calendar {
-      color: var(--action-calendar-hover);
+    .card-head-action:hover .action-icon,
+    .card-head-action:focus-visible .action-icon {
+      color: var(--action-pair-hover);
       transform: scale(1.04);
     }
 
@@ -552,9 +550,13 @@
       .card { padding: 18px; }
       .card:nth-child(4n + 3),
       .card:nth-child(4n + 4) {
+        --action-pair: var(--action-brown);
+        --action-pair-hover: var(--action-brown-hover);
         border-top-color: var(--card-accent);
       }
       .card:nth-child(even) {
+        --action-pair: var(--action-green);
+        --action-pair-hover: var(--action-green-hover);
         border-top-color: var(--card-accent-band);
       }
       .card-head {
