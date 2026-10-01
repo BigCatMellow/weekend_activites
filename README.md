@@ -22,7 +22,7 @@ No separate build step is required.
 The site includes:
 
 - weekend dates and weather note;
-- Local and NoVA+ tabs in the top-right;
+- a compact Local / NoVA+ scope selector in the hero;
 - a Best Bets section within each scope when applicable;
 - Friday, Saturday, and Sunday sections;
 - concrete event descriptions;
@@ -76,7 +76,7 @@ The weekly research is split into two scopes:
 
 NoVA+ also includes a small number of major **worth-the-drive** regional events outside Northern Virginia when the event itself justifies the trip, such as the State Fair of Virginia, Maryland Renaissance Festival, major fairs, and large seasonal or cultural festivals.
 
-Each event carries a `scope` field (`local` or `nova_plus`) used by the website tabs and email grouping.
+Each event carries a `scope` field (`local` or `nova_plus`) used by the website scope selector and email grouping.
 
 Coverage should include:
 
