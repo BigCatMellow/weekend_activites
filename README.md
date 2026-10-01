@@ -22,7 +22,8 @@ No separate build step is required.
 The site includes:
 
 - weekend dates and weather note;
-- a Best Bets section;
+- Local and NoVA+ tabs;
+- a Best Bets section within each scope when applicable;
 - Friday, Saturday, and Sunday sections;
 - concrete event descriptions;
 - date, time, location, and cost;
@@ -68,7 +69,14 @@ The email is intentionally simple:
 
 ## Search scope
 
-The scheduled research should search broadly around 20171, including Herndon, Reston, Chantilly, Centreville, Fairfax, Vienna, Great Falls, Sterling, Ashburn, Leesburg, McLean, Burke, and other worthwhile destinations within a reasonable drive.
+The weekly research is split into two scopes:
+
+- **Local** — the practical 20171 orbit: Herndon, Reston, Chantilly, Centreville, Fairfax, Vienna, Great Falls, Sterling, Ashburn, McLean, Burke, and similar close destinations.
+- **NoVA+** — broader Northern Virginia, including Leesburg, Manassas, Alexandria, Arlington, Falls Church, Woodbridge, Gainesville, Purcellville, Middleburg, Lorton, Occoquan, and similar destinations.
+
+NoVA+ also includes a small number of major **worth-the-drive** regional events outside Northern Virginia when the event itself justifies the trip, such as the State Fair of Virginia, Maryland Renaissance Festival, major fairs, and large seasonal or cultural festivals.
+
+Each event carries a `scope` field (`local` or `nova_plus`) used by the website tabs and email grouping.
 
 Coverage should include:
 
