@@ -162,7 +162,7 @@
     .weekend {
       margin-top: 9px;
       color: var(--muted);
-      font-size: 17px;
+      font-size: 20px;
     }
 
     .weather {
@@ -348,15 +348,15 @@
     .card-head-actions {
       display: flex;
       flex: 0 0 auto;
-      gap: 5px;
+      gap: 10px;
     }
 
     .card-head-action {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 34px;
-      height: 34px;
+      width: 44px;
+      height: 44px;
       border: 1px solid rgba(59,44,35,.16);
       border-radius: 9px;
       background: rgba(255,250,242,.72);
@@ -527,9 +527,13 @@
       .card:nth-child(even) .card-head {
         background: var(--card-header-band);
       }
+      .card-head-actions {
+        gap: 9px;
+      }
       .card-head-action {
-        width: 32px;
-        height: 32px;
+        width: 46px;
+        height: 46px;
+        font-size: 21px;
       }
       .fact { grid-template-columns: 74px minmax(0,1fr); }
     }
