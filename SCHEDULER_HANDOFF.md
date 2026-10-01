@@ -26,7 +26,7 @@ Research in two explicit scopes:
 
 Center this on **20171 / Herndon-Oak Hill-Chantilly** and the practical nearby orbit: Herndon, Reston, Chantilly, Centreville, Fairfax, Vienna, Great Falls, Sterling, Ashburn, McLean, Burke, and similarly close destinations.
 
-### NoVA+
+### nova+
 
 Search the broader Northern Virginia region as well, including **Leesburg, Manassas, Alexandria, Arlington, Falls Church, Woodbridge, Gainesville, Purcellville, Middleburg, Lorton, Occoquan**, and other worthwhile Northern Virginia destinations.
 
@@ -39,7 +39,7 @@ Also include a small number of **major worth-the-drive regional events** outside
 - major museum, cultural, food, or holiday events
 - unusually strong one-off events that justify the longer drive
 
-Do not pad NoVA+ with ordinary distant events. Distance needs a reason.
+Do not pad nova+ with ordinary distant events. Distance needs a reason.
 
 Search deliberately across:
 
@@ -64,7 +64,7 @@ Every event must be assigned a `scope`:
 - `local` — practical nearby outing from 20171
 - `nova_plus` — broader Northern Virginia or a major regional destination event
 
-The website uses this field for the **Local** and **NoVA+** tabs. Prefer enough useful events in both scopes for the tabs to be meaningful, but do not force weak NoVA+ picks.
+The website uses this field for the **Local** and **nova+** tabs. Prefer enough useful events in both scopes for the tabs to be meaningful, but do not force weak nova+ picks.
 
 ## Source quality
 
@@ -105,7 +105,7 @@ The overall `weather_note` should also be short and scannable, preferably one co
 
 Choose roughly **4-6** when the event pool supports it.
 
-Best Bets should be deliberately varied rather than six versions of the same outing. Include strong picks from both Local and NoVA+ when warranted. A useful mix might include:
+Best Bets should be deliberately varied rather than six versions of the same outing. Include strong picks from both Local and nova+ when warranted. A useful mix might include:
 
 - one strong family option;
 - one free/community option;
