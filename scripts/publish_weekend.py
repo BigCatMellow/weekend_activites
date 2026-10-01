@@ -160,20 +160,31 @@ def api(url, token, method="GET", data=None):
         return json.load(response)
 
 
-def update_trigger(report):
+def get_trigger_token():
     token = (os.getenv("NOTES_TRIGGER_TOKEN") or "").strip()
     if not token:
         fail(
-            "NOTES_TRIGGER_TOKEN is not configured; report files were published "
-            "but the email trigger cannot be advanced"
+            "NOTES_TRIGGER_TOKEN is not configured; refusing to publish because "
+            "the email handoff cannot be completed"
         )
+    return token
 
+
+def preflight_notes_access(token):
+    api(f"https://api.github.com/repos/{NOTES_REPO}", token)
+
+
+def update_trigger(report, token):
     url = f"https://api.github.com/repos/{NOTES_REPO}/contents/{TRIGGER_PATH}"
     content = f"{report['weekend_start']}\n{report['generated_at']}\n"
     encoded = base64.b64encode(content.encode("utf-8")).decode("ascii")
 
     try:
         current = api(url, token)
+        existing = base64.b64decode(current.get("content", "")).decode("utf-8")
+        if existing == content:
+            print("Notes trigger is already current; no duplicate email trigger.")
+            return False
         payload = {
             "message": f"Trigger Weekend Activities {report['weekend_start']}",
             "content": encoded,
@@ -188,21 +199,26 @@ def update_trigger(report):
         }
 
     api(url, token, "PUT", payload)
+    return True
 
 
 def main():
     package = extract(os.getenv("ISSUE_BODY", ""))
     report = validate(package)
     weekend_start = report["weekend_start"]
+    token = get_trigger_token()
+    preflight_notes_access(token)
 
     latest = REPO / "data/latest.json"
     if latest.exists():
         current = json.loads(latest.read_text(encoding="utf-8"))
-        if (
-            current.get("weekend_start") == weekend_start
-            and current.get("generated_at") == report.get("generated_at")
-        ):
-            print("This exact weekend report is already published; no trigger change.")
+        if current.get("weekend_start") == weekend_start:
+            validate({"package_version": 1, "report": current})
+            changed = update_trigger(current, token)
+            if changed:
+                print("Weekend report was already published; recovered the missing email trigger.")
+            else:
+                print("Weekend report was already published and already triggered.")
             return
 
     serialized = json.dumps(report, indent=2, ensure_ascii=False) + "\n"
@@ -235,7 +251,7 @@ def main():
         fail("Persisted archive/latest mismatch")
 
     validate({"package_version": 1, "report": persisted})
-    update_trigger(persisted)
+    update_trigger(persisted, token)
     print(f"Published and triggered Weekend Activities for {weekend_start}")
 
 
