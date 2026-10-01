@@ -22,7 +22,7 @@ No separate build step is required.
 The site includes:
 
 - weekend dates and weather note;
-- a compact Local / NoVA+ scope selector in the hero;
+- a compact Local / nova+ scope selector in the hero;
 - a Best Bets section within each scope when applicable;
 - Friday, Saturday, and Sunday sections;
 - concrete event descriptions;
@@ -72,9 +72,9 @@ The email is intentionally simple:
 The weekly research is split into two scopes:
 
 - **Local** — the practical 20171 orbit: Herndon, Reston, Chantilly, Centreville, Fairfax, Vienna, Great Falls, Sterling, Ashburn, McLean, Burke, and similar close destinations.
-- **NoVA+** — broader Northern Virginia, including Leesburg, Manassas, Alexandria, Arlington, Falls Church, Woodbridge, Gainesville, Purcellville, Middleburg, Lorton, Occoquan, and similar destinations.
+- **nova+** — broader Northern Virginia, including Leesburg, Manassas, Alexandria, Arlington, Falls Church, Woodbridge, Gainesville, Purcellville, Middleburg, Lorton, Occoquan, and similar destinations.
 
-NoVA+ also includes a small number of major **worth-the-drive** regional events outside Northern Virginia when the event itself justifies the trip, such as the State Fair of Virginia, Maryland Renaissance Festival, major fairs, and large seasonal or cultural festivals.
+nova+ also includes a small number of major **worth-the-drive** regional events outside Northern Virginia when the event itself justifies the trip, such as the State Fair of Virginia, Maryland Renaissance Festival, major fairs, and large seasonal or cultural festivals.
 
 Each event carries a `scope` field (`local` or `nova_plus`) used by the website scope selector and email grouping.
 
@@ -148,5 +148,5 @@ Practical rules:
 - use Inter for body, controls, and metadata, with Roboto Slab reserved for display hierarchy;
 - preserve accent scarcity: strong rust/olive accents should indicate hierarchy, selection, or meaningful structure rather than decorate every element;
 - use restrained card elevation and let spacing, borders, header color, and alignment carry most grouping;
-- keep Local / NoVA+ as a compact segmented filter with explicit pressed state and keyboard-visible focus;
+- keep Local / nova+ as a compact segmented filter with explicit pressed state and keyboard-visible focus;
 - distinguish loading, empty, and failure states and provide a direct retry path for load failures.
