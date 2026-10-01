@@ -299,10 +299,42 @@
       box-shadow: var(--shadow);
     }
 
-    .fall-art {
+    .fall-art,
+    .card-flourish {
       display: block;
       pointer-events: none;
       user-select: none;
+    }
+
+    .card-flourish {
+      display: none;
+    }
+
+    body[data-art="flourish"] .fall-art {
+      display: none;
+    }
+
+    body[data-art="flourish"] .card.has-flourish .card-flourish {
+      display: block;
+      position: absolute;
+      top: 2px;
+      right: 6px;
+      width: 155px;
+      height: 62px;
+      object-fit: contain;
+      object-position: right top;
+      opacity: .15;
+      filter: sepia(1) saturate(1.35) hue-rotate(345deg) brightness(.58);
+      transform: rotate(-1deg);
+    }
+
+    body[data-art="flourish"] .card.has-flourish h3 {
+      padding-right: 110px;
+    }
+
+    body[data-art="corner"] .card-flourish,
+    body[data-art="top"] .card-flourish {
+      display: none;
     }
 
     body[data-art="corner"] .fall-art {
@@ -437,11 +469,19 @@
         width: calc(100% + 36px);
         margin: 0 -18px 16px;
       }
+      body[data-art="flourish"] .card.has-flourish .card-flourish {
+        width: 115px;
+        height: 48px;
+        opacity: .13;
+      }
+      body[data-art="flourish"] .card.has-flourish h3 {
+        padding-right: 76px;
+      }
       .fact { grid-template-columns: 74px minmax(0,1fr); }
     }
   </style>
 </head>
-<body data-theme="fall" data-art="corner">
+<body data-theme="fall" data-art="flourish">
   <main class="page" id="app">
     <div class="topbar">
       <div class="theme-switch" aria-label="Color theme">
@@ -449,7 +489,8 @@
         <button type="button" data-theme-choice="neutral" aria-pressed="false">Neutral</button>
       </div>
       <div class="art-switch" aria-label="Card artwork style">
-        <button type="button" data-art-choice="corner" aria-pressed="true">Corner art</button>
+        <button type="button" data-art-choice="flourish" aria-pressed="true">Flourish</button>
+        <button type="button" data-art-choice="corner" aria-pressed="false">Corner art</button>
         <button type="button" data-art-choice="top" aria-pressed="false">Top art</button>
       </div>
     </div>
@@ -492,7 +533,9 @@
 
     const artButtons = [...document.querySelectorAll("[data-art-choice]")];
     const savedArt = localStorage.getItem("weekend-art");
-    const initialArt = savedArt === "top" ? "top" : "corner";
+    const initialArt = ["flourish", "corner", "top"].includes(savedArt)
+      ? savedArt
+      : "flourish";
 
     function setArt(style) {
       document.body.dataset.art = style;
@@ -509,6 +552,15 @@
       button.addEventListener("click", () => setArt(button.dataset.artChoice));
     });
     setArt(initialArt);
+
+    const FLOURISH_ART = {
+      oak: {
+        src: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Oak-leaf_and_acorn_ornament%2C_Ser%C3%B5es%2C_1901.svg"
+      },
+      leaf: {
+        src: "https://upload.wikimedia.org/wikipedia/commons/e/ef/LF_Ornament_Black_Right_Up.svg"
+      }
+    };
 
     const FALL_ART = {
       leaf: {
@@ -620,8 +672,44 @@
       return FALL_ART.leaf;
     }
 
-    function card(event) {
+    function flourishFor(event) {
+      const haystack = [
+        event.category,
+        event.title,
+        event.summary
+      ].filter(Boolean).join(" ").toLowerCase();
+
+      if (/oak|acorn|farm|fall|pumpkin|harvest|history|festival/.test(haystack)) {
+        return FLOURISH_ART.oak;
+      }
+      return FLOURISH_ART.leaf;
+    }
+
+    function shouldShowFlourish(event, index, best) {
+      if (best) return true;
+      const haystack = [
+        event.category,
+        event.title,
+        event.summary
+      ].filter(Boolean).join(" ").toLowerCase();
+      return index % 2 === 0 &&
+        /fall|farm|nature|park|festival|arts|history|community|garden/.test(haystack);
+    }
+
+    function card(event, index = 0, best = false) {
       const article = el("article", "card");
+
+      if (shouldShowFlourish(event, index, best)) {
+        article.classList.add("has-flourish");
+        const flourish = flourishFor(event);
+        const flourishImage = el("img", "card-flourish");
+        flourishImage.src = flourish.src;
+        flourishImage.alt = "";
+        flourishImage.loading = "lazy";
+        flourishImage.decoding = "async";
+        article.append(flourishImage);
+      }
+
       const art = artworkFor(event);
       const image = el("img", "fall-art");
       image.src = art.src;
@@ -686,7 +774,7 @@
       section.append(head);
 
       const grid = el("div", best ? "grid best-grid" : "grid");
-      events.forEach(event => grid.append(card(event)));
+      events.forEach((event, index) => grid.append(card(event, index, best)));
       section.append(grid);
       document.getElementById("content").append(section);
 
