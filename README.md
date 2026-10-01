@@ -1,5 +1,37 @@
 # Weekend Activities
 
+## Website
+
+The repository includes a responsive `index.html` that reads directly from `data/latest.json`. The Thursday publishing workflow therefore updates the email data and the website from the same source automatically.
+
+Expected GitHub Pages URL after Pages is enabled:
+
+`https://bigcatmellow.github.io/weekend_activites/`
+
+### One-time GitHub Pages setup
+
+In this repository:
+
+1. Open **Settings → Pages**.
+2. Under **Build and deployment**, choose **Deploy from a branch**.
+3. Select **main** and **/(root)**.
+4. Click **Save**.
+
+No separate build step is required.
+
+The site includes:
+
+- weekend dates and weather note;
+- a Best Bets section;
+- Friday, Saturday, and Sunday sections;
+- concrete event descriptions;
+- date, time, location, and cost;
+- Plan Ahead warnings;
+- one-click Google Maps directions;
+- links to the official event source;
+- responsive light/dark styling for desktop and mobile.
+
+
 A weekly Thursday roundup of things to do around ZIP code **20171** (Herndon / Oak Hill / Chantilly / Fairfax County), delivered by email through the existing `BigCatMellow/Notes` SMTP setup.
 
 ## How it works
