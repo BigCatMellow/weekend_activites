@@ -27,6 +27,8 @@
       --card-header-band: #d8d6ad;
       --card-accent: #a64f24;
       --card-accent-band: #6f713f;
+      --action-icon: #9b5e12;
+      --action-icon-hover: #7d4710;
       --forecast-fri-bg: #fff1d2;
       --forecast-fri-border: #e4c17a;
       --forecast-fri-label: #a65321;
@@ -58,6 +60,8 @@
       --card-header-band: #dde3dd;
       --card-accent: #315f4f;
       --card-accent-band: #68756d;
+      --action-icon: #9b5e12;
+      --action-icon-hover: #7d4710;
       --forecast-fri-bg: #f7f1e5;
       --forecast-fri-border: #d8c7a4;
       --forecast-fri-label: #86613d;
@@ -408,9 +412,38 @@
       background: rgba(255,250,242,.72);
       color: var(--text);
       text-decoration: none;
-      font-size: 40px;
       line-height: 1;
       cursor: pointer;
+    }
+
+    .action-icon {
+      display: block;
+      width: 38px;
+      height: 38px;
+      background: var(--action-icon);
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      mask-position: center;
+      -webkit-mask-size: contain;
+      mask-size: contain;
+      transition: background-color .15s ease, transform .15s ease;
+    }
+
+    .action-icon-marker {
+      -webkit-mask-image: url("./assets/icons/marker.svg");
+      mask-image: url("./assets/icons/marker.svg");
+    }
+
+    .action-icon-calendar {
+      -webkit-mask-image: url("./assets/icons/calendar-day.svg");
+      mask-image: url("./assets/icons/calendar-day.svg");
+    }
+
+    .card-head-action:hover .action-icon,
+    .card-head-action:focus-visible .action-icon {
+      background: var(--action-icon-hover);
+      transform: scale(1.04);
     }
 
     .card-head-action:hover,
@@ -579,7 +612,10 @@
       .card-head-action {
         width: 46px;
         height: 46px;
-        font-size: 40px;
+      }
+      .card-head-action .action-icon {
+        width: 40px;
+        height: 40px;
       }
       .fact { grid-template-columns: 74px minmax(0,1fr); }
     }
@@ -755,7 +791,8 @@
       const headActions = el("div", "card-head-actions");
 
       if (event.map_url) {
-        const directionsIcon = el("a", "card-head-action", "🗺️");
+        const directionsIcon = el("a", "card-head-action");
+        directionsIcon.append(el("span", "action-icon action-icon-marker"));
         directionsIcon.href = event.map_url;
         directionsIcon.target = "_blank";
         directionsIcon.rel = "noopener";
@@ -766,7 +803,8 @@
 
       const calUrl = calendarUrl(event);
       if (calUrl) {
-        const calendarIcon = el("a", "card-head-action", "📅");
+        const calendarIcon = el("a", "card-head-action");
+        calendarIcon.append(el("span", "action-icon action-icon-calendar"));
         calendarIcon.href = calUrl;
         calendarIcon.target = "_blank";
         calendarIcon.rel = "noopener";
