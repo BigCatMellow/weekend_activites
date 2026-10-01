@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Weekend Activities · 20171</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f3f2ef;
+      --surface: #ffffff;
+      --surface-soft: #f7f6f3;
+      --text: #202124;
+      --muted: #686b70;
+      --line: #deddd9;
+      --accent: #315f4f;
+      --accent-soft: #e7f0eb;
+      --warning: #7a5200;
+      --warning-bg: #fff1cc;
+      --link: #2457a6;
+      --shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.05);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1e2020;
+        --surface: #282a2a;
+        --surface-soft: #303232;
+        --text: #f1f1ee;
+        --muted: #b9bcb9;
+        --line: #414444;
+        --accent: #9bc7b5;
+        --accent-soft: #263b33;
+        --warning: #f2c96d;
+        --warning-bg: #4a3a17;
+        --link: #a9c7ff;
+        --shadow: none;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: var(--link); }
+
+    .page {
+      width: min(960px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 34px 0 64px;
+    }
+
+    .hero {
+      padding: 30px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin: 0 0 7px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 7vw, 52px);
+      line-height: 1.03;
+      letter-spacing: -.035em;
+    }
+
+    .weekend {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .weather {
+      margin-top: 24px;
+      padding: 15px 17px;
+      border-left: 4px solid var(--accent);
+      background: var(--surface-soft);
+      border-radius: 0 10px 10px 0;
+      color: var(--muted);
+    }
+
+    .weather strong { color: var(--text); }
+
+    .jump {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 18px 0 0;
+    }
+
+    .jump a {
+      display: inline-block;
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .section { margin-top: 42px; }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--text);
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: 25px;
+      letter-spacing: -.02em;
+    }
+
+    .section-head span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .best-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 21px;
+      line-height: 1.18;
+      letter-spacing: -.015em;
+    }
+
+    .badge {
+      align-self: flex-start;
+      margin-top: 9px;
+      padding: 4px 7px;
+      border-radius: 6px;
+      background: var(--warning-bg);
+      color: var(--warning);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .055em;
+      text-transform: uppercase;
+    }
+
+    .facts {
+      margin: 15px 0 0;
+      padding-left: 12px;
+      border-left: 2px solid var(--line);
+    }
+
+    .fact {
+      display: grid;
+      grid-template-columns: 82px minmax(0,1fr);
+      gap: 8px;
+      margin: 5px 0;
+      font-size: 13px;
+    }
+
+    .fact dt {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .fact dd {
+      margin: 0;
+      min-width: 0;
+    }
+
+    .description {
+      margin: 15px 0 0;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .registration {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: auto;
+      padding-top: 16px;
+    }
+
+    .actions a {
+      font-size: 13px;
+      font-weight: 750;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .empty, .error {
+      padding: 22px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 42px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .page { width: min(100% - 20px, 960px); padding-top: 18px; }
+      .hero { padding: 22px 20px; border-radius: 14px; }
+      .grid, .best-grid { grid-template-columns: 1fr; }
+      .section { margin-top: 34px; }
+      .section-head { align-items: flex-end; }
+      .card { padding: 18px; }
+      .fact { grid-template-columns: 74px minmax(0,1fr); }
+    }
+  </style>
+</head>
+<body>
+  <main class="page" id="app">
+    <section class="hero">
+      <p class="eyebrow">Around 20171</p>
+      <h1>Weekend Activities</h1>
+      <div class="weekend" id="weekend">Loading this weekend…</div>
+      <div class="weather" id="weather" hidden></div>
+      <nav class="jump" id="jump" aria-label="Jump to a section"></nav>
+    </section>
+
+    <div id="content" aria-live="polite"></div>
+
+    <footer>
+      Event details can change. Confirm times, prices, weather impacts and availability with the organizer before leaving.
+    </footer>
+  </main>
+
+  <script>
+    const dataUrl = "./data/latest.json";
+
+    function parseDate(value) {
+      return new Date(value + "T12:00:00");
+    }
+
+    function shortDate(value) {
+      return new Intl.DateTimeFormat("en-US", {
+        weekday: "short", month: "short", day: "numeric"
+      }).format(parseDate(value));
+    }
+
+    function longDate(value) {
+      return new Intl.DateTimeFormat("en-US", {
+        weekday: "long", month: "long", day: "numeric"
+      }).format(parseDate(value));
+    }
+
+    function weekendRange(report) {
+      const start = parseDate(report.weekend_start);
+      const end = parseDate(report.weekend_end);
+      const startMonth = new Intl.DateTimeFormat("en-US", { month: "long" }).format(start);
+      const endMonth = new Intl.DateTimeFormat("en-US", { month: "long" }).format(end);
+      if (start.getMonth() === end.getMonth()) {
+        return `${startMonth} ${start.getDate()}–${end.getDate()}, ${end.getFullYear()}`;
+      }
+      return `${startMonth} ${start.getDate()}–${endMonth} ${end.getDate()}, ${end.getFullYear()}`;
+    }
+
+    function eventDateLabel(event) {
+      const values = (event.dates || []).slice().sort();
+      if (!values.length) return "Date varies";
+      if (values.length === 1) return shortDate(values[0]);
+
+      const dates = values.map(parseDate);
+      const contiguous = dates.every((date, index) => {
+        if (index === 0) return true;
+        const previous = dates[index - 1];
+        return Math.round((date - previous) / 86400000) === 1;
+      });
+
+      if (contiguous && dates[0].getMonth() === dates.at(-1).getMonth()) {
+        const firstDay = new Intl.DateTimeFormat("en-US", { weekday: "short" }).format(dates[0]);
+        const lastDay = new Intl.DateTimeFormat("en-US", { weekday: "short" }).format(dates.at(-1));
+        const month = new Intl.DateTimeFormat("en-US", { month: "short" }).format(dates[0]);
+        return `${firstDay}–${lastDay} · ${month} ${dates[0].getDate()}–${dates.at(-1).getDate()}`;
+      }
+
+      return values.map(shortDate).join(" · ");
+    }
+
+    function el(tag, className, text) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text !== undefined) node.textContent = text;
+      return node;
+    }
+
+    function factRow(icon, label, value) {
+      const wrapper = el("div", "fact");
+      const dt = el("dt", "", `${icon} ${label}`);
+      const dd = el("dd", "", value);
+      wrapper.append(dt, dd);
+      return wrapper;
+    }
+
+    function card(event) {
+      const article = el("article", "card");
+      article.append(el("h3", "", event.title || "Untitled event"));
+
+      if (event.buy_now) {
+        article.append(el("div", "badge", "⚠️ Plan ahead"));
+      }
+
+      const facts = el("dl", "facts");
+      facts.append(
+        factRow("📅", "Date", eventDateLabel(event)),
+        factRow("🕒", "Time", event.time || "Time varies"),
+        factRow("📍", "Where", [event.venue, event.area].filter(Boolean).join(" · ") || "Location varies"),
+        factRow("💵", "Cost", event.price || "Price not confirmed")
+      );
+      article.append(facts);
+
+      if (event.summary) {
+        article.append(el("p", "description", event.summary));
+      }
+
+      if (event.registration) {
+        article.append(el("p", "registration", `🎟️ ${event.registration}`));
+      }
+
+      const actions = el("div", "actions");
+
+      if (event.map_url) {
+        const directions = el("a", "", "🗺️ Directions");
+        directions.href = event.map_url;
+        directions.target = "_blank";
+        directions.rel = "noopener";
+        actions.append(directions);
+      }
+
+      if (event.source_url) {
+        const details = el("a", "", "↗ Event details");
+        details.href = event.source_url;
+        details.target = "_blank";
+        details.rel = "noopener";
+        actions.append(details);
+      }
+
+      article.append(actions);
+      return article;
+    }
+
+    function addSection(id, title, subtitle, events, best = false) {
+      if (!events.length) return;
+
+      const section = el("section", "section");
+      section.id = id;
+
+      const head = el("div", "section-head");
+      head.append(el("h2", "", title));
+      if (subtitle) head.append(el("span", "", subtitle));
+      section.append(head);
+
+      const grid = el("div", best ? "grid best-grid" : "grid");
+      events.forEach(event => grid.append(card(event)));
+      section.append(grid);
+      document.getElementById("content").append(section);
+
+      const jump = el("a", "", title);
+      jump.href = `#${id}`;
+      document.getElementById("jump").append(jump);
+    }
+
+    async function render() {
+      try {
+        const response = await fetch(dataUrl, { cache: "no-store" });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const report = await response.json();
+
+        document.title = `Weekend Activities · ${weekendRange(report)}`;
+        document.getElementById("weekend").textContent = weekendRange(report);
+
+        if (report.weather_note) {
+          const weather = document.getElementById("weather");
+          weather.hidden = false;
+          const strong = el("strong", "", "Weather: ");
+          weather.append(strong, document.createTextNode(report.weather_note));
+        }
+
+        const lookup = new Map((report.events || []).map(event => [event.id, event]));
+        const best = (report.best_bet_ids || []).map(id => lookup.get(id)).filter(Boolean);
+        addSection("best-bets", "Best Bets", "A varied shortlist", best, true);
+
+        const start = parseDate(report.weekend_start);
+        for (let offset = 0; offset < 3; offset += 1) {
+          const day = new Date(start);
+          day.setDate(start.getDate() + offset);
+          const iso = [
+            day.getFullYear(),
+            String(day.getMonth() + 1).padStart(2, "0"),
+            String(day.getDate()).padStart(2, "0")
+          ].join("-");
+          const dayEvents = (report.events || []).filter(event => (event.dates || []).includes(iso));
+          addSection(
+            iso,
+            new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(day),
+            longDate(iso).replace(/^[^,]+, /, ""),
+            dayEvents
+          );
+        }
+
+        if (!document.getElementById("content").children.length) {
+          document.getElementById("content").append(
+            el("div", "empty", "No weekend activities have been published yet.")
+          );
+        }
+      } catch (error) {
+        const message = el(
+          "div",
+          "error",
+          "The latest weekend list could not be loaded. Try refreshing in a moment."
+        );
+        document.getElementById("content").append(message);
+        console.error(error);
+      }
+    }
+
+    render();
+  </script>
+</body>
+</html>
