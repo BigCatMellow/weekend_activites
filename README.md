@@ -121,3 +121,18 @@ After `NOTES_TRIGGER_TOKEN` is configured:
 - Publication is committed before the email trigger is touched.
 - The committed file is re-read and validated before the trigger advances.
 - If `NOTES_TRIGGER_TOKEN` is missing or invalid, the issue remains open and the workflow comments with a failure notice.
+
+
+## Design direction
+
+Use a **Playskool-style design mentality**: make important information obvious, friendly, chunky, and easy to scan without making the site childish.
+
+Practical rules:
+
+- prefer clear visual hierarchy over subtlety;
+- use familiar emoji as functional visual cues when they improve scanning;
+- make weather, dates, times, costs, directions, and plan-ahead warnings identifiable at a glance;
+- keep controls large and plainly labeled;
+- use short plain-language descriptions;
+- favor warm seasonal color and simple illustration over dense decoration;
+- decorative art must never compete with event information.
