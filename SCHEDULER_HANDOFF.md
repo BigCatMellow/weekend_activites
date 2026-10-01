@@ -65,13 +65,15 @@ For each day, include:
 - `high_f`
 - `low_f`
 - `conditions`
-- `notable` — one concise planning note, especially timing that matters (for example, "showers most likely after 2 PM", "gusty after sunset", or "dry through early afternoon")
+- `notable` — one concise planning note, especially timing that matters (for example, "Rain after 2 PM", "Gusty after sunset", or "Dry through early afternoon")
+
+For weather copy, **prefer brevity over grammatical completeness**. Telegraphic fragments are encouraged when clearer at a glance. Examples: "Rain after 2 PM", "Cooler, breezy", "Dry until evening", "Best outdoor day", "Wettest day". Avoid filler such as "there is a chance of", "it looks like", or "conditions are expected to" unless needed for accuracy.
 
 Use a current, reputable forecast source and do not invent hour-specific timing. If the available forecast does not support a useful timing claim, keep `notable` broad and accurate.
 
-The overall `weather_note` should synthesize the weekend into one practical takeaway, for example:
+The overall `weather_note` should also be short and scannable, preferably one compact sentence or a few terse clauses, for example:
 
-> Friday is the best outdoor day. Saturday is cooler, and Sunday looks wettest, so keep an indoor backup.
+> Fri best outdoors. Sat cooler. Sun wettest — keep an indoor backup.
 
 ## Best Bets
 
