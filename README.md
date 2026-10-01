@@ -134,5 +134,6 @@ Practical rules:
 - make weather, dates, times, costs, directions, and plan-ahead warnings identifiable at a glance;
 - keep controls large and plainly labeled;
 - use short plain-language descriptions;
-- favor warm seasonal color and simple illustration over dense decoration;
-- decorative art must never compete with event information.
+- favor warm seasonal color and subtle alternating row/card bands over decorative artwork;
+- use banding to help the eye track groups without creating strong visual stripes;
+- keep ornamentation minimal unless it clearly improves scanning.
