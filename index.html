@@ -176,6 +176,12 @@
       background: var(--surface);
     }
 
+    .forecast-icon {
+      margin-bottom: 4px;
+      font-size: 30px;
+      line-height: 1;
+    }
+
     .forecast-day-name {
       color: var(--accent);
       font-size: 11px;
@@ -548,6 +554,19 @@
       return `${startMonth} ${start.getDate()}–${endMonth} ${end.getDate()}, ${end.getFullYear()}`;
     }
 
+    function weatherIcon(conditions) {
+      const value = String(conditions || "").toLowerCase();
+      if (/thunder|storm/.test(value)) return "⛈️";
+      if (/snow|sleet|ice|freezing/.test(value)) return "🌨️";
+      if (/rain|shower|drizzle/.test(value)) return "🌧️";
+      if (/fog|mist/.test(value)) return "🌫️";
+      if (/wind|breezy|gust/.test(value)) return "💨";
+      if (/partly|mostly sunny|mostly clear/.test(value)) return "🌤️";
+      if (/cloud|overcast/.test(value)) return "☁️";
+      if (/sun|clear/.test(value)) return "☀️";
+      return "🌦️";
+    }
+
     function eventDateLabel(event) {
       const values = (event.dates || []).slice().sort();
       if (!values.length) return "Date varies";
@@ -690,12 +709,13 @@
 
         if (forecast.length) {
           weather.hidden = false;
-          weather.append(el("div", "forecast-title", "Weekend forecast"));
+          weather.append(el("div", "forecast-title", "🌦️ Weekend forecast"));
 
           const forecastGrid = el("div", "forecast-grid");
           forecast.forEach(day => {
             const panel = el("div", "forecast-day");
             const dateValue = parseDate(day.date);
+            panel.append(el("div", "forecast-icon", weatherIcon(day.conditions)));
             panel.append(
               el(
                 "div",
@@ -725,7 +745,7 @@
           weather.append(forecastGrid);
 
           if (report.weather_note) {
-            weather.append(el("div", "forecast-summary", report.weather_note));
+            weather.append(el("div", "forecast-summary", "👀 " + report.weather_note));
           }
         } else if (report.weather_note) {
           weather.hidden = false;
@@ -735,7 +755,7 @@
 
         const lookup = new Map((report.events || []).map(event => [event.id, event]));
         const best = (report.best_bet_ids || []).map(id => lookup.get(id)).filter(Boolean);
-        addSection("best-bets", "Best Bets", "A varied shortlist", best, true);
+        addSection("best-bets", "⭐ Best Bets", "A varied shortlist", best, true);
 
         const start = parseDate(report.weekend_start);
         for (let offset = 0; offset < 3; offset += 1) {
@@ -749,7 +769,7 @@
           const dayEvents = (report.events || []).filter(event => (event.dates || []).includes(iso));
           addSection(
             iso,
-            new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(day),
+            "🗓️ " + new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(day),
             longDate(iso).replace(/^[^,]+, /, ""),
             dayEvents
           );
