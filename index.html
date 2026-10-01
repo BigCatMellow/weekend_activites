@@ -27,8 +27,10 @@
       --card-header-band: #d8d6ad;
       --card-accent: #a64f24;
       --card-accent-band: #6f713f;
-      --action-icon: #d39a1e;
-      --action-icon-hover: #a96f08;
+      --action-marker: #7d4710;
+      --action-marker-hover: #60350b;
+      --action-calendar: #5f6738;
+      --action-calendar-hover: #464d29;
       --forecast-fri-bg: #fff1d2;
       --forecast-fri-border: #e4c17a;
       --forecast-fri-label: #a65321;
@@ -352,7 +354,7 @@
       display: block;
       width: 38px;
       height: 38px;
-      background: var(--action-icon);
+      background: currentColor;
       -webkit-mask-repeat: no-repeat;
       mask-repeat: no-repeat;
       -webkit-mask-position: center;
@@ -363,18 +365,26 @@
     }
 
     .action-icon-marker {
+      color: var(--action-marker);
       -webkit-mask-image: url("./assets/icons/marker.svg");
       mask-image: url("./assets/icons/marker.svg");
     }
 
     .action-icon-calendar {
+      color: var(--action-calendar);
       -webkit-mask-image: url("./assets/icons/calendar-day.svg");
       mask-image: url("./assets/icons/calendar-day.svg");
     }
 
-    .card-head-action:hover .action-icon,
-    .card-head-action:focus-visible .action-icon {
-      background: var(--action-icon-hover);
+    .card-head-action:hover .action-icon-marker,
+    .card-head-action:focus-visible .action-icon-marker {
+      color: var(--action-marker-hover);
+      transform: scale(1.04);
+    }
+
+    .card-head-action:hover .action-icon-calendar,
+    .card-head-action:focus-visible .action-icon-calendar {
+      color: var(--action-calendar-hover);
       transform: scale(1.04);
     }
 
@@ -384,7 +394,7 @@
     }
 
     .card-head-action:focus-visible {
-      outline: 2px solid var(--action-icon);
+      outline: 2px solid var(--card-accent);
       outline-offset: 2px;
       border-radius: 6px;
     }
