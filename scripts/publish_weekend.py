@@ -132,12 +132,16 @@ def validate(package):
         seen_ids.add(event_id)
 
         title = str(event.get("title") or "").strip()
+        scope = str(event.get("scope") or "local").strip()
         address = str(event.get("address") or "").strip()
         source_url = str(event.get("source_url") or "").strip()
         dates = event.get("dates")
 
         if not title:
             fail(f"Event {event_id} is missing title")
+        if scope not in {"local", "nova_plus"}:
+            fail(f"Event {event_id} has invalid scope {scope!r}")
+        event["scope"] = scope
         if not address:
             fail(f"Event {event_id} is missing address")
         if not source_url.startswith(("http://", "https://")):
