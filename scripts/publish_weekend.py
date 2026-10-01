@@ -7,7 +7,7 @@ import subprocess
 import sys
 import urllib.parse
 import urllib.request
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -93,10 +93,9 @@ def validate(package):
 
     seen_ids = set()
     seen_sources = set()
-    valid_days = {weekend_start.isoformat(), (weekend_start.replace(day=weekend_start.day)).isoformat(), weekend_end.isoformat()}
     valid_days = {
         weekend_start.isoformat(),
-        (weekend_start.fromordinal(weekend_start.toordinal() + 1)).isoformat(),
+        (weekend_start + timedelta(days=1)).isoformat(),
         weekend_end.isoformat(),
     }
 
