@@ -5,7 +5,7 @@
   "center_zip": "20171",
   "weekend_start": "2026-10-02",
   "weekend_end": "2026-10-04",
-  "weather_note": "Friday looks hot and mostly dry, near the upper 80s. Saturday turns much cooler with shower chances increasing later in the day. Sunday has the highest rain chance, so keep an indoor backup such as Haunted Lab.",
+  "weather_note": "Friday is warmest and best for earlier outdoor plans, though showers may develop after 2 PM. Saturday is much cooler and mostly dry during the day. Sunday carries the more persistent shower risk, so an indoor backup is useful.",
   "best_bet_ids": [
     "cox-farms-fall-festival",
     "vienna-oktoberfest",
@@ -259,5 +259,30 @@
       "source_url": "https://www.reston.org/Calendar.aspx?EID=1497&calType=0&day=1&month=10&year=2026",
       "map_url": "https://www.google.com/maps/dir/?api=1&destination=1525%20Brown%27s%20Chapel%20Rd%2C%20Reston%2C%20VA%2020191"
     }
-  ]
+  ],
+  "forecast": [
+    {
+      "date": "2026-10-02",
+      "high_f": 88,
+      "low_f": 58,
+      "conditions": "Mostly sunny; chance of showers",
+      "notable": "A 30% chance of showers develops after 2 PM; showers remain possible Friday evening."
+    },
+    {
+      "date": "2026-10-03",
+      "high_f": 67,
+      "low_f": 55,
+      "conditions": "Partly sunny",
+      "notable": "Much cooler than Friday and mainly dry during the day; only a slight overnight shower chance."
+    },
+    {
+      "date": "2026-10-04",
+      "high_f": 67,
+      "low_f": 55,
+      "conditions": "Mostly cloudy; chance of showers",
+      "notable": "A 40% chance of showers, mainly after 8 AM."
+    }
+  ],
+  "forecast_source": "National Weather Service Baltimore/Washington point forecast for Herndon, VA",
+  "forecast_source_url": "https://forecast.weather.gov/MapClick.php?FcstType=text&lat=38.9637&lg=english&lon=-77.4109&menu=1"
 }
