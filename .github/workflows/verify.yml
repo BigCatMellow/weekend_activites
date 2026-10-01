@@ -1,0 +1,34 @@
+name: Verify Weekend Activities
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/**'
+      - '.github/workflows/**'
+      - 'SCHEDULER_HANDOFF.md'
+  pull_request:
+    paths:
+      - 'scripts/**'
+      - '.github/workflows/**'
+      - 'SCHEDULER_HANDOFF.md'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile publisher
+        run: python -m py_compile scripts/publish_weekend.py scripts/self_test.py
+
+      - name: Run publisher self-test
+        working-directory: scripts
+        run: python self_test.py
