@@ -81,8 +81,10 @@ def validate(package):
         fail("weekend_end must be a Sunday")
     if (weekend_end - weekend_start).days != 2:
         fail("weekend range must be Friday through Sunday")
-    if weekend_start <= today:
-        fail("weekend_start must be after publication day")
+    # Allow a Friday catch-up publication for the weekend already starting today.
+    # Past weekends remain invalid; Thursday and earlier still target a future Friday.
+    if weekend_start < today:
+        fail("weekend_start must not be before publication day")
 
     if str(report.get("center_zip") or "") != "20171":
         fail("center_zip must be 20171")
